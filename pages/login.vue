@@ -28,9 +28,11 @@ const password = ref("")
 const onLogin = () => {
     if(username.value=="Mario" && password.value=="123456") {
         console.log("logged in!")
+        useToast().success("login successful!")
     }
     else {
         console.log("not logged in!")
+        useToast().error("login failed!")
     }
 }
 
