@@ -29,7 +29,7 @@ const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium o
 
 const route = useRoute();
 const articleName = route.params.dynamicVariable
-const article = new Article("Article 4","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum,loremIpsum2])
+const article = new Article("Article 4","Subtitle 4","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum,loremIpsum2])
 
 const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
 const getFormattedDate = (date) => {

@@ -22,22 +22,22 @@ const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium o
 import Article from "../classes/Article.js"
 import ImageData from "../classes/ImageData.js"
 const articleList = [
-    new Article("Article 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
-    new Article("Article 2","Jeff Davis",[loremIpsum2]),
-    new Article("Article 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
-    new Article("Article 4","Jeff Davis",[loremIpsum,loremIpsum2]),
-    new Article("Article 5","Jeff Davis",[loremIpsum3,loremIpsum2]),
-    new Article("Article 6","Jeff Davis",[loremIpsum2,loremIpsum3]),
-    new Article("Article 7","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum2]),
-    new Article("Article 8","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum]),
-    new Article("Article 9","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum2,loremIpsum3]),
+    new Article("Article 1","Subtitle 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
+    new Article("Article 2","Subtitle 2","Jeff Davis",[loremIpsum2]),
+    new Article("Article 3","Subtitle 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
+    new Article("Article 4","Subtitle 4","Jeff Davis",[loremIpsum,loremIpsum2]),
+    new Article("Article 5","Subtitle 5","Jeff Davis",[loremIpsum3,loremIpsum2]),
+    new Article("Article 6","Subtitle 6","Jeff Davis",[loremIpsum2,loremIpsum3]),
+    new Article("Article 7","Subtitle 7","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum2]),
+    new Article("Article 8","Subtitle 8","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum]),
+    new Article("Article 9","Subtitle 9","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum2,loremIpsum3]),
 ]
 
 let articleSubList = [
-    new Article("Article 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
-    new Article("Article 2","Jeff Davis",[loremIpsum2]),
-    new Article("Article 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
-    new Article("Article 4","Jeff Davis",[loremIpsum,loremIpsum2])
+    new Article("Article 1","Subtitle 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
+    new Article("Article 2","Subtitle 2","Jeff Davis",[loremIpsum2]),
+    new Article("Article 3","Subtitle 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
+    new Article("Article 4","Subtitle 4","Jeff Davis",[loremIpsum,loremIpsum2])
 ]
 
 const activePage = ref(0);
