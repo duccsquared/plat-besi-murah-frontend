@@ -56,4 +56,8 @@ const changePage = (page) => {
         i += 1
     }
 }
+
+console.log(useUserInfo().username.value)
+console.log(useUserInfo().password.value)
+
 </script>

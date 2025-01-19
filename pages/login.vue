@@ -29,6 +29,9 @@ const onLogin = () => {
     if(username.value=="Mario" && password.value=="123456") {
         console.log("logged in!")
         useToast().success("login successful!")
+        useUserInfo().username.value = "Mario"
+        useUserInfo().password.value = "123456"
+        navigateTo("/")
     }
     else {
         console.log("not logged in!")
