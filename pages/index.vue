@@ -11,6 +11,7 @@
             </div>
         </div>
         <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
+            <button v-if="useUserInfo().isLoggedIn()" @click="navigateTo('/article/new')" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white">New Article</button>
         </div>
     </div>
 </template>
