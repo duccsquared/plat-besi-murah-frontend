@@ -65,13 +65,13 @@ const getFormattedDate = (date) => {
 const editMode = ref(false)
 
 const onEdit = () => {
-	editedArticle.value = article.value
+	editedArticle.value = article.value.copyObj()
 	editMode.value = true
 }
 
 const onConfirm = () => {
 	editMode.value = false
-	article.value = editedArticle.value
+	article.value = editedArticle.value.copyObj()
 	editedArticle.value = null
 }
 
