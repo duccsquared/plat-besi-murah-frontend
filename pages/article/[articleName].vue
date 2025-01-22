@@ -23,6 +23,10 @@
 					v-model="editedArticle.bodyList[index]"
 					class="pb-2 w-4/5 h-32"
 				></textarea>
+				<div class="flex flex-col h-full justify-center space-y-2 px-2">
+					<button class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="addSectionAtIndex(index+1)">insert</button>
+					<button class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="deleteSectionAtIndex(index)">delete</button>
+				</div>
 			</div>
 
 
@@ -86,6 +90,14 @@ const performSwap = (i,j) => {
 
 const addSection = () => {
 	editedArticle.value.bodyList.push("")
+}
+
+const addSectionAtIndex = (i) => {
+	editedArticle.value.bodyList.splice(i,0,"")
+}
+
+const deleteSectionAtIndex = (i) => {
+	editedArticle.value.bodyList.splice(i,1)
 }
 
 </script>
