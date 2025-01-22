@@ -4,38 +4,14 @@
         <div class="flex flex-col w-3/4 m-2 p-2 rounded-md bg-gray-200 space-y-3 grow">
 			<h3 class="text-2xl font-semibold pb-2">{{article.title}}</h3>
 			<h4 class="text-md font-semibold pb-2">Posted {{getFormattedDate(article.date)}} by {{ article.author }}</h4>
-			<div v-if="!editMode" v-for="body in article.bodyList">
+			<div v-for="body in article.bodyList">
 				<div v-if="ImageData.prototype.isPrototypeOf(body)">
 					<img :src="body.path" :width="body.wdith" :height="body.height"/>
 				</div>
 				<p v-else class="pb-2">{{body}}</p>
 			</div>
-			<div v-else v-for="(body, index) in editedArticle?.bodyList" :key="index" class="rounded-md bg-gray-300 flex flex-row">
-				<div class="flex flex-col h-full justify-center space-y-2 px-2">
-					<button class="rounded-md bg-gray-500 p-2 w-8 h-fit text-white" @click="performSwap(index,index-1)">+</button>
-					<button class="rounded-md bg-gray-500 p-2 w-8 h-fit text-white" @click="performSwap(index,index+1)">-</button>
-				</div>
-				<div v-if="ImageData.prototype.isPrototypeOf(body)">
-					<img :src="body.path" :width="body.width" :height="body.height"/>
-				</div>
-				<textarea
-					v-else
-					v-model="editedArticle.bodyList[index]"
-					class="pb-2 w-4/5 h-32"
-				></textarea>
-			</div>
-
-
-			<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="addSection">Add Section</button>
-
 		</div>
         <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
-			<div v-if="useUserInfo().isLoggedIn()" class="flex flex-col space-y-2">
-				<button v-if="!editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="onEdit">edit page</button>
-				<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white"  @click="onConfirm">confirm changes</button>
-				<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white"  @click="onCancel">cancel</button>
-			</div>
-
         </div>
     </div>
 </template>
@@ -53,39 +29,11 @@ const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium o
 
 const route = useRoute();
 const articleName = route.params.dynamicVariable
-const article = ref(new Article("Article 4","Subtitle 4","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum,loremIpsum2]))
-
-const editedArticle = ref(null)
+const article = new Article("Article 4","Subtitle 4","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum,loremIpsum2])
 
 const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
 const getFormattedDate = (date) => {
     return `${date.getDay()} ${monthFormatter.format(date)}, ${date.getFullYear()}`
-}
-
-const editMode = ref(false)
-
-const onEdit = () => {
-	editedArticle.value = article.value
-	editMode.value = true
-}
-
-const onConfirm = () => {
-	editMode.value = false
-	article.value = editedArticle.value
-	editedArticle.value = null
-}
-
-const onCancel = () => {
-	editMode.value = false	
-	editedArticle.value = null
-}
-
-const performSwap = (i,j) => {
-	[editedArticle.value.bodyList[i], editedArticle.value.bodyList[j]] = [editedArticle.value.bodyList[j], editedArticle.value.bodyList[i]];
-}
-
-const addSection = () => {
-	editedArticle.value.bodyList.push("")
 }
 
 </script>
