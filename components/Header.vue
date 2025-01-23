@@ -2,7 +2,8 @@
 	<div class="bg-gray-700 h-16 text-white flex flex-row items-center justify-between p-5">
 		<a v-if="loggedIn" class="text-4xl" href="/">Plat Besi Murah (Admin End)</a>
 		<a v-else class="text-4xl" href="/">Plat Besi Murah (User End)</a>
-			<div class="flex flex-row space-y-2">
+			<div class="flex flex-row space-x-8">
+				<a href="/articles">Articles</a>
 				<a v-if="!loggedIn" href="/login">Login</a>
 				<button v-else @click="onLogout">Logout</button>
 			</div>
