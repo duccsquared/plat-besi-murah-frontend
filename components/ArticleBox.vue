@@ -31,7 +31,7 @@ const getFormattedDate = (date) => {
 }
 
 const onReadMore = () => {
-    navigateTo(`/article/${props.article.title.replace(" ","-")}`);
+    navigateTo(`/articles/${props.article.title.replace(" ","-")}`);
 
 }
 
