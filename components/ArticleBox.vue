@@ -1,7 +1,7 @@
 <template>
     <button class="flex flex-col w-full p-2 rounded-md bg-gray-300 hover:bg-gray-400" @click="onReadMore">
-        <h3 class="text-2xl font-bold pb-1">{{article.title}}</h3>
-        <h4 class="text-lg font-medium pb-1">{{article.subtitle}}</h4>
+        <H2 class="text-2xl font-bold pb-1">{{article.title}}</H2>
+        <H3 class="text-lg font-medium pb-1">{{article.subtitle}}</H3>
         <p class="text-md font-light pb-1"> {{getFormattedDate(article.date)}} | {{ article.author }}</p>
         <!-- <div v-for="body in article.bodyList">
             <div v-if="ImageData.prototype.isPrototypeOf(body)">

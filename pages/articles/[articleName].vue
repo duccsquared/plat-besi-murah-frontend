@@ -2,8 +2,8 @@
 	<Header/>
     <div class="flex min-h-screen flex-row bg-gray-100 p-5">
         <div class="flex flex-col w-3/4 m-2 p-2 rounded-md bg-gray-200 space-y-3 grow">
-			<h3 class="text-2xl font-semibold pb-2">{{article.title}}</h3>
-			<h4 class="text-md font-semibold pb-2">Posted {{getFormattedDate(article.date)}} by {{ article.author }}</h4>
+			<H2>{{article.title}}</H2>
+			<H3>Posted {{getFormattedDate(article.date)}} by {{ article.author }}</H3>
 			<div v-if="!editMode" v-for="body in article.bodyList">
 				<div v-if="ImageData.prototype.isPrototypeOf(body)">
 					<img :src="body.path" :width="body.wdith" :height="body.height"/>
@@ -12,8 +12,8 @@
 			</div>
 			<div v-else v-for="(body, index) in editedArticle?.bodyList" :key="index" class="rounded-md bg-gray-300 flex flex-row">
 				<div class="flex flex-col h-full justify-center space-y-2 px-2">
-					<button class="rounded-md bg-gray-500 p-2 w-8 h-fit text-white" @click="performSwap(index,index-1)">+</button>
-					<button class="rounded-md bg-gray-500 p-2 w-8 h-fit text-white" @click="performSwap(index,index+1)">-</button>
+					<Button @click="performSwap(index,index-1)">+</Button>
+					<Button @click="performSwap(index,index+1)">-</Button>
 				</div>
 				<div v-if="ImageData.prototype.isPrototypeOf(body)">
 					<img :src="body.path" :width="body.width" :height="body.height"/>
@@ -24,8 +24,8 @@
 					class="pb-2 w-4/5 h-32"
 				></textarea>
 				<div class="flex flex-col h-full justify-center space-y-2 px-2">
-					<button class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="addSectionAtIndex(index+1)">insert</button>
-					<button class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="deleteSectionAtIndex(index)">delete</button>
+					<Button @click="addSectionAtIndex(index+1)">insert</Button>
+					<Button @click="deleteSectionAtIndex(index)">delete</Button>
 				</div>
 			</div>
 
@@ -35,9 +35,9 @@
 		</div>
         <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
 			<div v-if="useUserInfo().isLoggedIn()" class="flex flex-col space-y-2">
-				<button v-if="!editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="onEdit">edit page</button>
-				<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white"  @click="onConfirm">confirm changes</button>
-				<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white"  @click="onCancel">cancel</button>
+				<Button v-if="!editMode" @click="onEdit">edit page</Button>
+				<Button v-if="editMode"  @click="onConfirm">confirm changes</Button>
+				<Button v-if="editMode"  @click="onCancel">cancel</Button>
 			</div>
 
         </div>

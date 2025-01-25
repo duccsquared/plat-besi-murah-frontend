@@ -4,13 +4,13 @@
         <div class="bg-gray-200 w-1/2 min-h-full">
         </div>
         <div class="bg-gray-300 w-1/2 min-h-full flex flex-col justify-center items-center space-y-4">
-            <h2 class="text-2xl">Login</h2>
+            <H2 class="text-2xl">Login</H2>
             <div class="flex flex-row space-x-2">
-                <p class="">Username/email:</p>
+                <p>Username/email:</p>
                 <input v-model="username">
             </div>
             <div class="flex flex-row space-x-2">
-                <p class="">Password:</p>
+                <p>Password:</p>
                 <input v-model="password">
             </div>
             <div class="flex flex-row space-x-2">
