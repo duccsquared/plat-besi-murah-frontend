@@ -12,7 +12,7 @@
         <div class="w-full flex flex-col items-center">
             <div class="grid grid-cols-3 gap-20 justify-center px-40 py-5">
                 <div v-for="product in productList">
-                    <button class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
+                    <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
                         <img :src="'/img/'+product.id+'.png'" class=""/>
                     </button>
                 </div>
