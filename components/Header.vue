@@ -3,14 +3,14 @@
 		<a v-if="loggedIn" class="text-4xl" href="/">www.platbesimurah.com (admin)</a>
 		<a v-else class="text-4xl" href="/">www.platbesimurah.com</a>
 			<div class="flex flex-row space-x-8">
-				<a href="/">Beranda</a>
-				<a href="/">Tentang Kami</a>
-				<a href="/">Produk</a>
-				<a href="/">Kontak</a>
-				<a href="/articles">Artikel</a>
+				<a href="/" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-800':fullPath=='/'}">Beranda</a>
+				<a href="/" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-800':fullPath=='/about'}">Tentang Kami</a>
+				<a href="/" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-800':fullPath=='/products'}">Produk</a>
+				<a href="/" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-800':fullPath=='/contact'}">Kontak</a>
+				<a href="/articles" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-800':fullPath=='/articles'}">Artikel</a>
 
-				<a v-if="!loggedIn" href="/login">Login</a>
-				<button v-else @click="onLogout">Logout</button>
+				<a v-if="!loggedIn" href="/login" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out">Login</a>
+				<button v-else @click="onLogout" class="hover:bg-gray-800 p-2 transition duration-200 ease-in-out">Logout</button>
 			</div>
 	</div>
 </template>
@@ -22,7 +22,8 @@ defineOptions({
 const loggedIn = ref(false)
 loggedIn.value = useUserInfo().isLoggedIn()
 
-console.log(loggedIn.value)
+const route = useRoute()
+const fullPath = route.fullPath
 
 const onLogout = () => {
 	const usernameCookie = useCookie("username");
