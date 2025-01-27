@@ -34,7 +34,7 @@
 
 		</div>
         <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
-			<div v-if="useUserInfo().isLoggedIn()" class="flex flex-col space-y-2">
+			<div v-if="isLoggedIn" class="flex flex-col space-y-2">
 				<Button v-if="!editMode" @click="onEdit">edit page</Button>
 				<Button v-if="editMode"  @click="onConfirm">confirm changes</Button>
 				<Button v-if="editMode"  @click="onCancel">cancel</Button>
@@ -54,6 +54,7 @@ const loremIpsum = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et
 const loremIpsum2 = " Donec nibh magna, sollicitudin vitae gravida non, consectetur id lectus. Nullam quis mi egestas, rhoncus nisi suscipit, imperdiet arcu. Nulla quis varius nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin vitae pharetra est, sit amet dapibus dolor. Fusce commodo consequat varius. Ut suscipit leo ut efficitur dapibus. Aliquam vel varius lacus. Fusce vel purus at metus tempor venenatis ac nec massa. Nullam maximus interdum dignissim. Morbi volutpat dolor eget eros lacinia lacinia. Sed pharetra commodo molestie. Pellentesque nec tincidunt lectus, et dapibus tortor. Nam condimentum, urna non porttitor rutrum, est odio ultrices nibh, vitae sodales velit eros ut mi. Morbi et diam tempus, porta nunc sit amet, efficitur nunc. Sed tempor maximus odio, sit amet egestas justo ullamcorper at. "
 const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium orci, vel auctor tellus purus eu arcu. Proin enim tellus, vestibulum id nisi vel, viverra tincidunt metus. Praesent mattis ligula non mollis eleifend. Mauris ut semper mauris. Fusce nunc neque, sodales sit amet porttitor sit amet, porttitor non nunc. Duis quis nisl nec elit aliquam elementum eget ut lorem. Pellentesque sit amet mi magna. Ut finibus risus elit, lacinia dictum nunc sagittis at. Phasellus sed feugiat ex. Proin tincidunt orci quis varius posuere. Cras sit amet nisi id justo iaculis convallis et eget nisl. Phasellus vitae ornare lectus. Vivamus dictum nunc sed lectus tempus malesuada. Etiam ullamcorper interdum imperdiet. Maecenas eget ornare eros, in euismod ipsum. "
 
+const isLoggedIn = useUserInfo().isLoggedIn()
 
 const route = useRoute();
 const articleName = route.params.articleName
