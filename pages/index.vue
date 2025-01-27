@@ -1,8 +1,9 @@
 <template>
 	<Header/>
-    <div class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden bg-gray-400">
+    <!-- <div class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden bg-gray-400">
         <img src="/img/websiteSplashImage.png" class="w-full h-full object-cover" />
-    </div>   
+    </div>    -->
+    <ImageSlideshow :imageList="imageList"/>
      <div class="flex min-h-screen flex-col bg-gray-100 p-5">
         <p class="px-10 py-1 text-lg font-semibold">Kami menyediaaan plat besi dengan ukuran sesuai dengan kebutuhan produksi., berlokasi di Cilegon Timur yang berdekatan dengan pabrik baja PT. Krakatau Steel. Tbk sehingga kami lebih mudah mendapatkan material plat untuk kami proses dan kirim ke customer.</p>
         <p class="px-10 py-1 text-lg font-semibold">Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. </p>
@@ -23,6 +24,11 @@
 <script setup>
 
 const productList = ref(null)
+const imageList = [
+  "/img/websiteSplashImage.png",
+  "/img/websiteSplashImage2.png",
+  "/img/websiteSplashImage3.png",
+]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat U-head",id:"platUHead"},{name:"Bracket",id:"bracket"}]
 
 </script>
