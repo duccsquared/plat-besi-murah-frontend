@@ -1,6 +1,6 @@
 <template>
 	<Header/>
-    <div class="w-full h-[36rem] overflow-hidden bg-gray-400">
+    <div class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden bg-gray-400">
         <img src="/img/websiteSplashImage.png" class="w-full h-full object-cover" />
     </div>   
      <div class="flex min-h-screen flex-col bg-gray-100 p-5">
@@ -10,7 +10,7 @@
         <H1 class="text-3xl font-bold text-black my-9">Products</H1>
 
         <div class="w-full flex flex-col items-center">
-            <div class="grid grid-cols-3 gap-20 justify-center px-40 py-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center px-10 md:px-20 lg:px-32 xl:px-40 py-5">
                 <div v-for="product in productList">
                     <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
                         <img :src="'/img/'+product.id+'.png'" class=""/>
