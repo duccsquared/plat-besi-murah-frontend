@@ -1,9 +1,14 @@
 <template>
 	<div class="bg-gray-700 h-16 text-white flex flex-row items-center justify-between p-5">
-		<a v-if="loggedIn" class="text-4xl" href="/">Plat Besi Murah (Admin End)</a>
-		<a v-else class="text-4xl" href="/">Plat Besi Murah (User End)</a>
+		<a v-if="loggedIn" class="text-4xl" href="/">www.platbesimurah.com (admin)</a>
+		<a v-else class="text-4xl" href="/">www.platbesimurah.com</a>
 			<div class="flex flex-row space-x-8">
-				<a href="/articles">Articles</a>
+				<a href="/">Beranda</a>
+				<a href="/">Tentang Kami</a>
+				<a href="/">Produk</a>
+				<a href="/">Kontak</a>
+				<a href="/articles">Artikel</a>
+
 				<a v-if="!loggedIn" href="/login">Login</a>
 				<button v-else @click="onLogout">Logout</button>
 			</div>
