@@ -4,19 +4,43 @@
         <img src="/img/websiteSplashImage.png" class="w-full h-full object-cover" />
     </div>    -->
     <ImageSlideshow :imageList="imageList"/>
-     <div class="flex min-h-screen flex-col bg-gray-100 p-5">
-        <p class="px-10 py-1 text-lg font-semibold">Kami menyediaaan plat besi dengan ukuran sesuai dengan kebutuhan produksi., berlokasi di Cilegon Timur yang berdekatan dengan pabrik baja PT. Krakatau Steel. Tbk sehingga kami lebih mudah mendapatkan material plat untuk kami proses dan kirim ke customer.</p>
-        <p class="px-10 py-1 text-lg font-semibold">Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. </p>
+     <div class="flex min-h-screen flex-col bg-gray-100 px-10 md:px-20 lg:px-32 xl:px-40 py-5">
+        <p class="py-1 text-lg font-semibold">Kami menyediaaan plat besi dengan ukuran sesuai dengan kebutuhan produksi., berlokasi di Cilegon Timur yang berdekatan dengan pabrik baja PT. Krakatau Steel. Tbk sehingga kami lebih mudah mendapatkan material plat untuk kami proses dan kirim ke customer.</p>
+        <p class="py-1 text-lg font-semibold">Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. </p>
         
         <H1 class="text-3xl font-bold text-black my-9">Products</H1>
 
         <div class="w-full flex flex-col items-center">
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center px-10 md:px-20 lg:px-32 xl:px-40 py-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="product in productList">
                     <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
                         <img :src="'/img/'+product.id+'.png'" class=""/>
                     </button>
                 </div>
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="w-1/5">
+                <H2>Kontak Kami</H2>
+                <p>PT. Pijar kreasi Mandiri</p>
+                <p>Jl. Serang-Cilegon No.3 Km 8</p>
+                <p>Pejaten, Kramatwatu</p>
+                <p>Serang, Banten 42161</p>
+                <div class="flex flex-row">
+                    <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>
+                    <a 
+                        href="https://wa.me/6281388488430" 
+                        class="font-semibold text-green-500 hover:underline"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        +62 813-8848-8430
+                    </a>
+                </div>
+                
+            </div>
+            <div class="w-4/5 bg-gray-300 h-40">
+
             </div>
         </div>
     </div>
