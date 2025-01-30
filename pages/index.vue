@@ -62,4 +62,5 @@ const imageList = [
 ]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat U-head",id:"platUHead"},{name:"Bracket",id:"bracket"}]
 
+console.log(await useApi("/testCategory/addition","POST",null,{num1:8,num2:7}))
 </script>
