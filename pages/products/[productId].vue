@@ -7,11 +7,19 @@
             <p class="pb-2">{{ body }}</p>
         </div>
         <div class="w-full flex flex-col items-center">
+            <!-- image grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
-                <div v-for="image in imageList">
-                    <img :src="image" class=""/>
+                <div v-for="image in imageList" :key="image" class="cursor-pointer" @click="openModal(image)">
+                    <img :src="image" class="w-full h-auto rounded-md shadow-md hover:scale-105 transition duration-200" />
                 </div>
             </div>
+
+            <!-- enlarged image -->
+            <button v-if="selectedImage" @click="selectedImage = null" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+                <div class="relative bg-white p-2 rounded-lg">
+                    <img :src="selectedImage" class="max-w-[80vw] h-[80vh] object-contain" />
+                </div>
+            </button>
         </div>
         <H3>Hubungi Kami</H3>
         <div class="flex flex-row">
@@ -55,6 +63,12 @@ const imageList = [
   "/img/platBabyCoil5.png",
   "/img/platBabyCoil6.png",
 ]
+
+const selectedImage = ref(null);
+
+const openModal = (image) => {
+  selectedImage.value = image;
+};
 
 const mainImage = "/img/platBabyCoil1.png"
 </script>
