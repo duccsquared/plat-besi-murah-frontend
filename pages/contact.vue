@@ -24,7 +24,7 @@
             <div class="md:w-3/4 bg-gray-300 h-40">
                 <iframe
                     class="w-full h-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.569944047783!2d106.0728835744362!3d-6.18618206223351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42053269d98b03%3A0xc034a1485d9abef0!2sJl.%20Serang%20-%20Cilegon%20Km.%208%2C%20Pejaten%2C%20Kramatwatu%2C%20Serang%2C%20Banten%2042161%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1678475800567!5m2!1sen!2sid"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d495.9405640265457!2d106.1161622!3d-6.0597629!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e418d6a60da799b%3A0x88edce79ee46774c!2sPT.%20Pijar%20Kreasi%20Mandiri!5e0!3m2!1sen!2snl!4v1738312755380!5m2!1sen!2snl"
                     style="border:0;"
                     allowfullscreen=""
                     loading="lazy"
