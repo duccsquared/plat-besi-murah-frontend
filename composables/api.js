@@ -8,15 +8,13 @@ export const useApi = async (request, method,body=null,query=null) => {
             'Content-Type': 'application/json',
         }
     });
-
-  if(result.error.value == null) {
-    result.data.isError = false
-		return result.data
-	}
-	else {
-    result.error.isError = true
-		return result.error
-	}
+  if(result.data.value!=null) {
+    return result.data.value
+  }
+  else {
+    return result?.error?.value?.data
+  }
+  
 }
 
 const formatRequest = (request,query) => {
