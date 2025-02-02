@@ -28,8 +28,11 @@ const props = defineProps({
 const currentIndex = ref(0);
   
 const isVisible = ref(true);
-  
+
+let remainingSeconds = 5
+
 const nextImage = () => {
+  remainingSeconds = 5
   isVisible.value = false;
   setTimeout(() => {
     currentIndex.value = (currentIndex.value + 1) % props.imageList.length;
@@ -38,10 +41,24 @@ const nextImage = () => {
 };
   
 const prevImage = () => {
+  remainingSeconds = 5
   isVisible.value = false;
   setTimeout(() => {
     currentIndex.value = (currentIndex.value - 1 + props.imageList.length) % props.imageList.length;
     isVisible.value = true;
   }, 300); 
 };
+
+
+const timeLoop = () => {
+  remainingSeconds -= 1
+  if(remainingSeconds==0) {
+    nextImage()
+  }
+  setTimeout(() => {
+    timeLoop()
+  },1000)
+}
+
+timeLoop()
   </script>
