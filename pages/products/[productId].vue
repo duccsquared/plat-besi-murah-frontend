@@ -57,20 +57,17 @@ const mainImage = "/img/platBabyCoil1.png"
 
 
 
-onMounted(async ()=> {
-    await useApi(`/addition`,"GET",null,{num1:5,num2:5});
-    const result = await useApi(`/products`,"GET",null,{id:productId});
-    console.log(result)
-    if(result.isSuccess==true) {
-        productData.value = result.data
-    }
-    else {
-        useToast().error(result.error)
-    }
-})
+// onMounted(async ()=> {
+//     await useApi(`/addition`,"GET",null,{num1:5,num2:5});
+//     const result = await useApi(`/products`,"GET",null,{id:productId});
+//     console.log(result)
+//     if(result.isSuccess==true) {
+//         productData.value = result.data
+//     }
+//     else {
+//         useToast().error(result.error)
+//     }
+// })
 
-watch(productData,()=>{
-
-})
 
 </script>
