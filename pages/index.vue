@@ -5,9 +5,12 @@
     </div>    -->
     <ImageSlideshow :imageList="imageList"/>
      <div class="flex min-h-screen flex-col bg-gray-100 px-10 md:px-20 lg:px-32 xl:px-40 py-5">
-        <p class="py-1 text-lg font-semibold">Kami menyediaaan plat besi dengan ukuran sesuai dengan kebutuhan produksi., berlokasi di Cilegon Timur yang berdekatan dengan pabrik baja PT. Krakatau Steel. Tbk sehingga kami lebih mudah mendapatkan material plat untuk kami proses dan kirim ke customer.</p>
-        <p class="py-1 text-lg font-semibold">Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. </p>
-        
+        <p class="py-1 text-lg font-medium">Kami bergerak dibidang penyediaan plat besi khususnya baby coil yang kami luruskan dan potong menjadi ukuran standard mau pun ukuran khusus. </p>
+        <p class="py-1 text-lg font-medium">Perusahaan kami berlokasi di Cilegon Timur dan dioperasikan secara profesional oleh tim produksi yang berpengalaman dan didukung mesin-mesin berstandar modern seperti mesin pelurus, mesin cutting size, mesin bending, mesin laser cutting dan lain-lain.</p>
+        <p class="py-1 text-lg font-medium">Dengan kinerja profesional dan dukungan peralatan memadai, kami telah mendapat kepercayaan customer untuk menyediakan plat dengan ukuran dan ketebalan sesuai dengan kebutuhan, sehingga dapat mempelancar proses produksi.</p>
+        <p class="py-1 text-lg font-medium">Keunggulan utama kami adalah harga plat yang kami tawarkan murah sehingga dapat membantu menekan biaya produksi. </p>
+
+
         <H1 class="text-3xl font-bold text-black my-9">Products</H1>
 
         <div class="w-full flex flex-col items-center">
@@ -60,7 +63,7 @@ const imageList = [
   "/img/websiteSplashImage2.png",
   "/img/websiteSplashImage3.png",
 ]
-productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat U-head",id:"platUHead"},{name:"Bracket",id:"bracket"}]
+productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
 
 // console.log(await useApi("/testCategory/addition","POST",null,{num1:8,num2:7}))
 </script>
