@@ -19,6 +19,13 @@
                 </div>
             </button>
         </div>
+        <!-- youtube video -->
+        <div class="w-full flex items-center justify-center" v-if="productData?.video!=null">
+            <iframe class="w-2/5 aspect-video"
+                src="https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n">
+            </iframe> 
+        </div>
+
         <H3>Hubungi Kami</H3>
         <div class="flex flex-row">
             <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>

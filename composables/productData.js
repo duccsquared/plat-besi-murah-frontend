@@ -24,7 +24,8 @@ tebal: 0.4-1.8mm
 Lebar: 900-1220mm
 panjang: standard atau sesuai
 kebutuhan
-        `
+        `,
+        video: "https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n"
     },
     cuttingSizePlate: {
         id: "cuttingSizePlate",
