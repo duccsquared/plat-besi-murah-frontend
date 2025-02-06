@@ -54,8 +54,7 @@ const openModal = (image) => {
 };
 
 const mainImage = "/img/platBabyCoil1.png"
-
-
+productData.value = useProductData().productData.value[productId]
 
 // onMounted(async ()=> {
 //     await useApi(`/addition`,"GET",null,{num1:5,num2:5});

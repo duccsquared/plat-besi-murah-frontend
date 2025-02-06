@@ -56,6 +56,8 @@
     </div>
 </template>
 <script setup>
+import { useProductData } from '~/composables/productData';
+
 
 const productList = ref(null)
 const imageList = [
@@ -64,6 +66,6 @@ const imageList = [
   "/img/websiteSplashImage3.png",
 ]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
-
+useProductData()
 // console.log(await useApi("/testCategory/addition","POST",null,{num1:8,num2:7}))
 </script>
