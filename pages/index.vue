@@ -11,7 +11,7 @@
         <p class="py-1 text-lg font-medium">Keunggulan utama kami adalah harga plat yang kami tawarkan murah sehingga dapat membantu menekan biaya produksi. </p>
 
 
-        <H1 class="text-3xl font-bold text-black my-9">Products</H1>
+        <H1 class="text-3xl font-bold text-black mt-9 mb-2">Products</H1>
 
         <div class="w-full flex flex-col items-center">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
@@ -29,7 +29,7 @@
                 <p>Jl. Serang-Cilegon No.3 Km 8</p>
                 <p>Pejaten, Kramatwatu</p>
                 <p>Serang, Banten 42161</p>
-                <div class="flex flex-row">
+                <div class="flex flex-row mt-8 mb-8 md:mb-0">
                     <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>
                     <a 
                         href="https://wa.me/6281388488430" 
