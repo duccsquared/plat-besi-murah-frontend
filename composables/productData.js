@@ -122,8 +122,18 @@ Ukuran: 130 x 130mm(jackbase)
     bracket: {
         id: "bracket",
         name: "Bracket",
-        desc: "Description for Bracket",
-        mainImage: "/img/cuttingSizePlateMain.png",
-        imageList: ["/img/cuttingSizePlate1.png","/img/cuttingSizePlate2.png","/img/cuttingSizePlate3.png","/img/cuttingSizePlate4.png","/img/cuttingSizePlate5.png","/img/cuttingSizePlate6.png"],
+        desc: `
+Kami memproduksi dan menjual bracket rak minimarket dengan kualitas bagus dan harga murah. 
+
+Produk kami tersedia dalam beberapa ukuran dan ketebalan 
+
+Spesifikasi :
+Bahan: SPHC
+Tebal: 1.6mm & 2.0mm
+Ukuran: 28 cm
+Kuat hingga 50kg pershelving
+        `,
+        mainImage: "/img/bracketMain.png",
+        imageList: ["/img/bracket1.png","/img/bracket2.png","/img/bracket3.png","/img/bracket4.png","/img/bracket5.png","/img/bracket6.png"],
     },
 }
