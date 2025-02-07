@@ -27,7 +27,6 @@ Lebar: 900-1220mm
 panjang: standard atau sesuai
 kebutuhan
         `,
-        video: "https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n"
     },
     cuttingSizePlate: {
         id: "cuttingSizePlate",
@@ -66,7 +65,7 @@ Ukuran: Sesuai kebutuhan
 Kami menyediakan pembuatan Base Plate sesuai kebutuhan perusahaan anda dengan harga terjangkau dan berkualitas. Kami dapat membuat Base Plate dengan ukuran dan bentuknya khusus sesuai keinginan anda.
 
 Dengan mengunakan mesin laser cutting sehingga base plate yang dihasilkan menjadi sangat presisi.
- 
+
 <b>Spesifikasi base plate kami
 Jenis Plat: SPHC (plat Hitam), SPHC-PO (plat abu-abu) & SPCC-SD(plat putih)
 Tebal: 1.0-6.0mm
@@ -75,6 +74,7 @@ Ukuran: sesuai dengan kebutuhan
         `,
         mainImage: "/img/basePlateMain.png",
         imageList: ["/img/basePlate1.png","/img/basePlate2.png","/img/basePlate3.png","/img/basePlate4.png","/img/basePlate5.png","/img/basePlate6.png"],
+        video: "https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n"
     },
     besiSikuLubang: {
         id: "besiSikuLubang",
@@ -87,8 +87,7 @@ Produk kami tersedia dalam beberapa ukuran dan ketebalan
 <b>Besi SIku Lubang
 Ukuran: 3.75 x 3.75 cm
 Panjang: 2 meter
-Tebal: 1.0mm, 1.2mm, 1.4mm, 1.6mm, 1.8mm, 
-            2.0mm, 2.3mm, 2.5mm 2.8mm, 3.0mm
+Tebal: 1.0mm, 1.2mm, 1.4mm, 1.6mm, 1.8mm, 2.0mm, 2.3mm, 2.5mm 2.8mm, 3.0mm
  
 <b>Ambalan 
 Bahan: SPCC-SD dan SPCC-UN
@@ -109,7 +108,7 @@ Tebal: 0.6-0.8mm
         desc: `
 Kami menyediakan plat jack base dan plat U-head untuk kebutuhan produksi Jack Base & U-Head scaffolding dengan harga terjangkau dan berkualitas. Plat jack base dan u-head kami memiliki kualitas yang bagus karena kamu menggunakan mesin laser cutting sehingga memiliki  tingkat presisi sempurna.
 
-Spesifikasi:
+<b>Spesifikasi:
 Jenis plat: SPHC dan SPHC-PO
 Tebal: 3.9-4.0mm
 Ukuran: 130 x 130mm(jackbase)
@@ -127,7 +126,7 @@ Kami memproduksi dan menjual bracket rak minimarket dengan kualitas bagus dan ha
 
 Produk kami tersedia dalam beberapa ukuran dan ketebalan 
 
-Spesifikasi :
+<b>Spesifikasi :
 Bahan: SPHC
 Tebal: 1.6mm & 2.0mm
 Ukuran: 28 cm
