@@ -27,7 +27,7 @@
         <!-- youtube video -->
         <div class="w-full flex items-center justify-center" v-if="productData?.video!=null">
             <iframe class="w-4/5 md:w-3/5 lg:w-2/5 aspect-video"
-                src="https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n">
+                :src="productData?.video">
             </iframe> 
         </div>
 
@@ -79,4 +79,5 @@ productData.value = useProductData().productData[productId]
 //     }
 // })
 productData.value.bodyList = productData.value.desc.split("\n")
+console.log(productData.value)
 </script>

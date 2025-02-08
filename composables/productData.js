@@ -27,6 +27,7 @@ Lebar: 900-1220mm
 panjang: standard atau sesuai
 kebutuhan
         `,
+        video: "https://www.youtube.com/embed/Ul5ETbV6GBA?si=grn4VRp72ulbahJK"
     },
     cuttingSizePlate: {
         id: "cuttingSizePlate",
