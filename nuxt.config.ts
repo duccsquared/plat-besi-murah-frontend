@@ -13,6 +13,11 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/toast.js'
   ],
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_API_BASE_URL || 'http://localhost:8080/api/', // Fallback to localhost
+    },
+  },
 
   modules: ["@nuxt/image"]
 })

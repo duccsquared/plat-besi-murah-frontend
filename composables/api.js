@@ -1,6 +1,7 @@
 export const useApi = async (request, method,body=null,query=null) => {
-    let result = await useLazyFetch(formatRequest(request,query), {
-        baseURL: "http://localhost:8080/api/",
+  const config = useRuntimeConfig(); 
+  let result = await useLazyFetch(formatRequest(request, query), {
+      baseURL: config.public.apiBase,
         method: method,
         body: method != "GET" & body!=null ? JSON.stringify(body) : null,
         headers: {
