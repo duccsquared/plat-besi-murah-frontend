@@ -1,8 +1,5 @@
 <template>
 	<Header/>
-    <!-- <div class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden bg-gray-400">
-        <img src="/img/websiteSplashImage.png" class="w-full h-full object-cover" />
-    </div>    -->
     <ImageSlideshow :imageList="imageList"/>
      <div class="flex min-h-screen flex-col bg-gray-100 px-10 md:px-20 lg:px-32 xl:px-40 py-5">
         <p class="py-1 text-lg font-medium">Kami bergerak dibidang penyediaan plat besi khususnya baby coil yang kami luruskan dan potong menjadi ukuran standard mau pun ukuran khusus. </p>
@@ -17,7 +14,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="product in productList">
                     <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
-                        <img :src="'/img/'+product.id+'.png'" class=""/>
+                        <NuxtImg :src="'/img/'+product.id+'.png'" placeholder format="webp" class=""/>
                     </button>
                 </div>
             </div>

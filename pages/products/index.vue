@@ -7,7 +7,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="product in productList">
                     <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
-                        <img :src="'/img/'+product.id+'.png'" class=""/>
+                        <NuxtImg :src="'/img/'+product.id+'.png'" placeholder format="webp" class=""/>
                     </button>
                 </div>
             </div>

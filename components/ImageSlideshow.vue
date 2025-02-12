@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden bg-gray-400 relative">
-      <img :src="props.imageList[currentIndex]" class="w-full h-full object-cover transition-opacity duration-500" :class="{ 'opacity-100': isVisible, 'opacity-0': !isVisible }"/>
-  
+
+      <NuxtImg :src="props.imageList[currentIndex]" format="webp" class="w-full h-full object-cover transition-opacity duration-500" :class="{ 'opacity-100': isVisible, 'opacity-0': !isVisible }"/>
       <div class="absolute top-1/2 left-4 transform -translate-y-1/2">
         <button class="bg-gray-800 text-white rounded-full p-2 shadow-lg hover:bg-gray-700" @click="prevImage">
           ‹

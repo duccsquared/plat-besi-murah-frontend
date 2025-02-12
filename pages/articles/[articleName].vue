@@ -6,7 +6,7 @@
 			<H3>Posted {{getFormattedDate(article.date)}} by {{ article.author }}</H3>
 			<div v-if="!editMode" v-for="body in article.bodyList">
 				<div v-if="ImageData.prototype.isPrototypeOf(body)">
-					<img :src="body.path" :width="body.wdith" :height="body.height"/>
+					<NuxtImg placeholder format="webp" :src="body.path" :width="body.wdith" :height="body.height"/>
 				</div>
 				<p v-else class="pb-2">{{body}}</p>
 			</div>
@@ -16,7 +16,7 @@
 					<Button @click="performSwap(index,index+1)">-</Button>
 				</div>
 				<div v-if="ImageData.prototype.isPrototypeOf(body)">
-					<img :src="body.path" :width="body.width" :height="body.height"/>
+					<NuxtImg placeholder format="webp" :src="body.path" :width="body.width" :height="body.height"/>
 				</div>
 				<textarea
 					v-else
