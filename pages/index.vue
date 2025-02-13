@@ -56,7 +56,6 @@
 <script setup>
 import { useProductData } from '~/composables/productData';
 
-console.log("0000000000000000000000")
 
 const productList = ref(null)
 const imageList = [
@@ -66,9 +65,10 @@ const imageList = [
 ]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
 useProductData()
+
+console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
 const testApiVal = ref(null)
 testApiVal.value = await useApi("/testCategory/addition","POST",null,{num1:8,num2:7})
-console.log(testApiVal.value)
-console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
+console.log(testApiVal)
 console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBb")
 </script>
