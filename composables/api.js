@@ -13,8 +13,14 @@ export const useApi = async (request, method,body=null,query=null) => {
   if(result.data.value!=null) {
     return result.data.value
   }
-  else {
+  else if(result?.error?.value?.data!=null) {
     return result?.error?.value?.data
+  }
+  else if(result?.error?.value?.cause!=null) {
+    return result?.error?.value?.cause
+  }
+  else {
+    return result?.error?.value
   }
   
 }
