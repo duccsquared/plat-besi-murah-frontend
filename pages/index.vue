@@ -7,6 +7,7 @@
         <p class="py-1 text-lg font-medium">Dengan kinerja profesional dan dukungan peralatan memadai, kami telah mendapat kepercayaan customer untuk menyediakan plat dengan ukuran dan ketebalan sesuai dengan kebutuhan, sehingga dapat mempelancar proses produksi.</p>
         <p class="py-1 text-lg font-medium">Keunggulan utama kami adalah harga plat yang kami tawarkan murah sehingga dapat membantu menekan biaya produksi. </p>
         <p>{{ testApiVal }}</p>
+        <p>beep boop</p>
 
         <H1 class="text-3xl font-bold text-black mt-9 mb-2">Products</H1>
 
@@ -55,6 +56,7 @@
 <script setup>
 import { useProductData } from '~/composables/productData';
 
+console.log("0000000000000000000000")
 
 const productList = ref(null)
 const imageList = [
@@ -67,4 +69,6 @@ useProductData()
 const testApiVal = ref(null)
 testApiVal.value = await useApi("/testCategory/addition","POST",null,{num1:8,num2:7})
 console.log(testApiVal.value)
+console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
+console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBb")
 </script>
