@@ -9,6 +9,7 @@ export const useApi = async (request, method,body=null,query=null) => {
             'Content-Type': 'application/json',
         }
     });
+  console.log(result)
   if(result.data.value!=null) {
     return result.data.value
   }
