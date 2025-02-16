@@ -9,12 +9,16 @@
             <p v-else-if="text.substring(0,3)=='<b>'"><b>{{ text.substring(3)}}</b></p>
             <p v-else>{{ text }}</p>
         </div>
-        <div class="w-full flex flex-col items-center">
+        <div class="w-full flex flex-col items-center bg-green-200">
             <!-- image grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="image in productData?.imageList" :key="image" class="cursor-pointer" @click="openModal(image)">
                     <NuxtImg placeholder format="webp" :src="image" class="w-full h-auto rounded-md shadow-md hover:scale-105 transition duration-200" />
                 </div>
+                 <!-- youtube video -->
+                <iframe class="col-span-2 md:col-span-3 aspect-video min-w-full"
+                    :src="productData?.video">
+                </iframe> 
             </div>
 
             <!-- enlarged image -->
@@ -24,12 +28,7 @@
                 </div>
             </button>
         </div>
-        <!-- youtube video -->
-        <div class="w-full flex items-center justify-center" v-if="productData?.video!=null">
-            <iframe class="w-4/5 md:w-3/5 lg:w-2/5 aspect-video"
-                :src="productData?.video">
-            </iframe> 
-        </div>
+
 
         <H3>Hubungi Kami</H3>
         <div class="flex flex-row">
