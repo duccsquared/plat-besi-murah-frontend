@@ -1,5 +1,6 @@
 export const useApi = async (request, method,body=null,query=null) => {
   const config = useRuntimeConfig(); 
+  console.log("API BASE URL:", config.public.apiBase); // Debugging
   let result = await useLazyFetch(formatRequest(request, query), {
       baseURL: config.public.apiBase,
         method: method,
