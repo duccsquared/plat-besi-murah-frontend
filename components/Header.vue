@@ -63,9 +63,9 @@
 			<a href="/about" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-900':fullPath=='/about'}">Tentang Kami</a>
 			<a href="/products" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-900':fullPath=='/products'}">Produk</a>
 			<a href="/contact" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-900':fullPath=='/contact'}">Kontak</a>
-			<a href="/articles" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-900':fullPath=='/articles'}">Artikel</a>
+			<!-- <a href="/articles" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out" :class="{'bg-gray-900':fullPath=='/articles'}">Artikel</a>
 			<a v-if="!loggedIn" href="/login" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out">Login</a>
-			<button v-else @click="onLogout" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out">Logout</button>
+			<button v-else @click="onLogout" class="hover:bg-gray-700 p-2 transition duration-200 ease-in-out">Logout</button> -->
 		</div>
 	</div>
 </template>
