@@ -6,7 +6,6 @@
         <p class="py-1 text-lg font-medium">Perusahaan kami berlokasi di Cilegon Timur dan dioperasikan secara profesional oleh tim produksi yang berpengalaman dan didukung mesin-mesin berstandar modern seperti mesin pelurus, mesin cutting size, mesin bending, mesin laser cutting dan lain-lain.</p>
         <p class="py-1 text-lg font-medium">Dengan kinerja profesional dan dukungan peralatan memadai, kami telah mendapat kepercayaan customer untuk menyediakan plat dengan ukuran dan ketebalan sesuai dengan kebutuhan, sehingga dapat mempelancar proses produksi.</p>
         <p class="py-1 text-lg font-medium">Keunggulan utama kami adalah harga plat yang kami tawarkan murah sehingga dapat membantu menekan biaya produksi. </p>
-        <p>{{ testApiVal }}</p>
         <p>beep boop</p>
 
         <H1 class="text-3xl font-bold text-black mt-9 mb-2">Products</H1>
@@ -65,10 +64,4 @@ const imageList = [
 ]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
 useProductData()
-
-console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
-const testApiVal = ref(null)
-testApiVal.value = await useApi("/testCategory/addition","POST",null,{num1:8,num2:7})
-console.log(testApiVal)
-console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBb")
 </script>

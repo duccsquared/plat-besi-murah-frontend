@@ -8,9 +8,4 @@
     </div>
 </template>
 <script setup>
-console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
-const testApiVal = ref(null)
-testApiVal.value = await useApi("/testCategory/addition","POST",null,{num1:8,num2:7})
-console.log(testApiVal)
-console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBb")
 </script>
