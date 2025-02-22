@@ -9,7 +9,7 @@
             <p v-else-if="text.substring(0,3)=='<b>'"><b>{{ text.substring(3)}}</b></p>
             <p v-else>{{ text }}</p>
         </div>
-        <div class="w-full flex flex-col items-center bg-green-200">
+        <div class="w-full flex flex-col items-center">
             <!-- image grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="image in productData?.imageList" :key="image" class="cursor-pointer" @click="openModal(image)">
