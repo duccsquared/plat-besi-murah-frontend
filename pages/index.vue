@@ -13,7 +13,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
                 <div v-for="product in productList">
                     <button @click="navigateTo('/products/'+product.id)" class="shadow-md hover:shadow-xl hover:scale-110 transition duration-200 ease-in-out">
-                        <NuxtImg :src="'/img/'+product.id+'.png'" placeholder format="webp" class=""/>
+                        <NuxtImg :src="'/img/'+product.id+'.jpg'" placeholder format="webp" class=""/>
                     </button>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <p>Pejaten, Kramatwatu</p>
                 <p>Serang, Banten 42161</p>
                 <div class="flex flex-row mt-8 mb-8 md:mb-0">
-                    <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>
+                    <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
                     <a 
                         href="https://wa.me/6281388488430" 
                         class="font-semibold text-green-500 hover:underline"
@@ -57,9 +57,9 @@ import { useProductData } from '~/composables/productData';
 
 const productList = ref(null)
 const imageList = [
-  "/img/websiteSplashImage.png",
-  "/img/websiteSplashImage2.png",
-  "/img/websiteSplashImage3.png",
+  "/img/websiteSplashImage.jpg",
+  "/img/websiteSplashImage2.jpg",
+  "/img/websiteSplashImage3.jpg",
 ]
 productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
 useProductData()

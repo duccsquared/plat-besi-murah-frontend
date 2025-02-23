@@ -32,7 +32,7 @@
 
         <H3>Hubungi Kami</H3>
         <div class="flex flex-row">
-            <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>
+            <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
             <a 
                 href="https://wa.me/6281388488430" 
                 class="font-semibold text-green-500 hover:underline"
@@ -50,12 +50,12 @@ const productId = route.params.productId
 const productData = ref(null)
 
 const imageList = [
-  "/img/platBabyCoil1.png",
-  "/img/platBabyCoil2.png",
-  "/img/platBabyCoil3.png",
-  "/img/platBabyCoil4.png",
-  "/img/platBabyCoil5.png",
-  "/img/platBabyCoil6.png",
+  "/img/platBabyCoil1.jpg",
+  "/img/platBabyCoil2.jpg",
+  "/img/platBabyCoil3.jpg",
+  "/img/platBabyCoil4.jpg",
+  "/img/platBabyCoil5.jpg",
+  "/img/platBabyCoil6.jpg",
 ]
 
 const selectedImage = ref(null);

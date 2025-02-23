@@ -20,7 +20,7 @@
   
 const props = defineProps({
     imageList: {
-        default: ["/img/websiteSplashImage.png"]
+        default: ["/img/websiteSplashImage.jpg"]
     }
 })
 

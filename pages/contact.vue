@@ -9,7 +9,7 @@
                 <p>Pejaten, Kramatwatu</p>
                 <p>Serang, Banten 42161</p>
                 <div class="flex flex-row">
-                    <img src="/img/whatsappSymbol.png" class="w-5 h-5"/>
+                    <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
                     <a 
                         href="https://wa.me/6281388488430" 
                         class="font-semibold text-green-500 hover:underline"

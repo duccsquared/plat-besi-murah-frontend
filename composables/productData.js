@@ -10,8 +10,8 @@ const productData = {
     platBabyCoil: {
         id: "platBabyCoil",
         name: "Plat Baby Coil",
-        mainImage: "/img/platBabyCoilMain.png",
-        imageList: ["/img/platBabyCoil1.png","/img/platBabyCoil2.png","/img/platBabyCoil3.png","/img/platBabyCoil4.png","/img/platBabyCoil5.png","/img/platBabyCoil6.png"],
+        mainImage: "/img/platBabyCoilMain.jpg",
+        imageList: ["/img/platBabyCoil1.jpg","/img/platBabyCoil2.jpg","/img/platBabyCoil3.jpg","/img/platBabyCoil4.jpg","/img/platBabyCoil5.jpg","/img/platBabyCoil6.jpg"],
         desc: `
 Kami menyediakan plat baby coil dengan harga murah dan dapat membantu untuk menekan biaya produksi. Plat baby coil terdiri dari beberapa spesifikasi sebagai berikut:
 
@@ -32,8 +32,8 @@ kebutuhan
     cuttingSizePlate: {
         id: "cuttingSizePlate",
         name: "Cutting Size Plate",
-        mainImage: "/img/cuttingSizePlateMain.png",
-        imageList: ["/img/cuttingSizePlate1.png","/img/cuttingSizePlate2.png","/img/cuttingSizePlate3.png","/img/cuttingSizePlate4.png","/img/cuttingSizePlate5.png","/img/cuttingSizePlate6.png"],
+        mainImage: "/img/cuttingSizePlateMain.jpg",
+        imageList: ["/img/cuttingSizePlate1.jpg","/img/cuttingSizePlate2.jpg","/img/cuttingSizePlate3.jpg","/img/cuttingSizePlate4.jpg","/img/cuttingSizePlate5.jpg","/img/cuttingSizePlate6.jpg"],
         desc: `
 Kami menyediakan plat besi dengan ukuran sesuai dengan kebutuhan produksi anda. Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. 
 
@@ -73,8 +73,8 @@ Tebal: 1.0-6.0mm
 Ukuran: sesuai dengan kebutuhan
 
         `,
-        mainImage: "/img/basePlateMain.png",
-        imageList: ["/img/basePlate1.png","/img/basePlate2.png","/img/basePlate3.png","/img/basePlate4.png","/img/basePlate5.png","/img/basePlate6.png"],
+        mainImage: "/img/basePlateMain.jpg",
+        imageList: ["/img/basePlate1.jpg","/img/basePlate2.jpg","/img/basePlate3.jpg","/img/basePlate4.jpg","/img/basePlate5.jpg","/img/basePlate6.jpg"],
         video: "https://www.youtube.com/embed/L2jdebq2o0U?si=gdcMPhByYyyJUv9n"
     },
     besiSikuLubang: {
@@ -100,8 +100,8 @@ Bahan: SPCC-SD dan SPCC-UN
 Ukuran: 7.8x7.8cm 
 Tebal: 0.6-0.8mm
         `,
-        mainImage: "/img/besiSikuLubangMain.png",
-        imageList: ["/img/besiSikuLubang1.png","/img/besiSikuLubang2.png","/img/besiSikuLubang3.png","/img/besiSikuLubang4.png","/img/besiSikuLubang5.png","/img/besiSikuLubang6.png"],
+        mainImage: "/img/besiSikuLubangMain.jpg",
+        imageList: ["/img/besiSikuLubang1.jpg","/img/besiSikuLubang2.jpg","/img/besiSikuLubang3.jpg","/img/besiSikuLubang4.jpg","/img/besiSikuLubang5.jpg","/img/besiSikuLubang6.jpg"],
     },
     platJackBaseUHead: {
         id: "platJackBaseUHead",
@@ -116,8 +116,8 @@ Ukuran: 130 x 130mm(jackbase)
                130 x 130mm(130x190mm U-head)
 
         `,
-        mainImage: "/img/platJackBaseUHeadMain.png",
-        imageList: ["/img/platJackBaseUHead1.png","/img/platJackBaseUHead2.png","/img/platJackBaseUHead3.png","/img/platJackBaseUHead4.png","/img/platJackBaseUHead5.png","/img/platJackBaseUHead6.png"],
+        mainImage: "/img/platJackBaseUHeadMain.jpg",
+        imageList: ["/img/platJackBaseUHead1.jpg","/img/platJackBaseUHead2.jpg","/img/platJackBaseUHead3.jpg","/img/platJackBaseUHead4.jpg","/img/platJackBaseUHead5.jpg","/img/platJackBaseUHead6.jpg"],
     },
     bracket: {
         id: "bracket",
@@ -133,7 +133,7 @@ Tebal: 1.6mm & 2.0mm
 Ukuran: 28 cm
 Kuat hingga 50kg pershelving
         `,
-        mainImage: "/img/bracketMain.png",
-        imageList: ["/img/bracket1.png","/img/bracket2.png","/img/bracket3.png","/img/bracket4.png","/img/bracket5.png","/img/bracket6.png"],
+        mainImage: "/img/bracketMain.jpg",
+        imageList: ["/img/bracket1.jpg","/img/bracket2.jpg","/img/bracket3.jpg","/img/bracket4.jpg","/img/bracket5.jpg","/img/bracket6.jpg"],
     },
 }
