@@ -1,17 +1,14 @@
 <template>
 	<Header/>
     <div class="flex min-h-screen flex-row bg-gray-100 p-5">
-        <div class="flex flex-col w-3/4 m-2 p-2 rounded-md bg-gray-200 space-y-3 grow">
+        <div class="flex flex-col space-y-3 grow">
             <div class="flex flex-row justify-between">
-                <H1>Recent Articles</H1>
+                <H1>Artikel</H1>
                 <Pagination @change="changePage" :activePage="activePage" :perPage="perPage" :total="total"/>
             </div>
             <div v-for="article in articleSubList">
                 <ArticleBox :article="article"/>
             </div>
-        </div>
-        <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
-            <Button v-if="isLoggedIn" @click="navigateTo('/articles/new')">New Article</Button>
         </div>
     </div>
 </template>
@@ -24,24 +21,16 @@ const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium o
 
 import Article from "../classes/Article.js"
 import ImageData from "../classes/ImageData.js"
-const articleList = [
-    new Article("Article 1","Subtitle 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
-    new Article("Article 2","Subtitle 2","Jeff Davis",[loremIpsum2]),
-    new Article("Article 3","Subtitle 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
-    new Article("Article 4","Subtitle 4","Jeff Davis",[loremIpsum,loremIpsum2]),
-    new Article("Article 5","Subtitle 5","Jeff Davis",[loremIpsum3,loremIpsum2]),
-    new Article("Article 6","Subtitle 6","Jeff Davis",[loremIpsum2,loremIpsum3]),
-    new Article("Article 7","Subtitle 7","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum2]),
-    new Article("Article 8","Subtitle 8","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum]),
-    new Article("Article 9","Subtitle 9","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum2,loremIpsum3]),
-]
 
-let articleSubList = [
-    new Article("Article 1","Subtitle 1","Jeff Davis",[new ImageData("/img/potato.svg"),loremIpsum]),
-    new Article("Article 2","Subtitle 2","Jeff Davis",[loremIpsum2]),
-    new Article("Article 3","Subtitle 3","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum3]),
-    new Article("Article 4","Subtitle 4","Jeff Davis",[loremIpsum,loremIpsum2])
-]
+const articleData = useArticleData().articleData
+
+let articleList = []
+
+for(var key in articleData){
+    articleList.push(articleData[key])
+}
+
+let articleSubList = [articleList[0],articleList[1],articleList[2],articleList[3]]
 
 const activePage = ref(0);
 const perPage = ref(4);

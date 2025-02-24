@@ -1,5 +1,5 @@
 <template>
-    <button class="flex flex-col w-full p-2 rounded-md bg-gray-300 hover:bg-gray-400" @click="onReadMore">
+    <button class="flex flex-col w-full p-2 shadow-md justify-start items-start bg-gray-300 hover:bg-gray-400 transition duration-200 ease-in-out" @click="onReadMore">
         <H2 class="text-2xl font-bold pb-1">{{article.title}}</H2>
         <H3 class="text-lg font-medium pb-1">{{article.subtitle}}</H3>
         <p class="text-md font-light pb-1"> {{getFormattedDate(article.date)}} | {{ article.author }}</p>

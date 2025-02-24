@@ -1,18 +1,46 @@
 <template>
 	<Header/>
     <div class="flex min-h-screen flex-row bg-gray-100 p-5">
-        <div class="flex flex-col space-y-3 grow">
+        <div class="flex flex-col w-3/4 m-2 p-2 rounded-md bg-gray-200 space-y-3 grow">
 			<H2>{{article.title}}</H2>
 			<H3>Posted {{getFormattedDate(article.date)}} by {{ article.author }}</H3>
 			<div v-if="!editMode" v-for="body in article.bodyList">
-				<div v-if="ImageData.prototype.isPrototypeOf(body)" :style="`width: ${body.width}px; height: ${body.height}px;`">
-					<NuxtImg :src="body.path" class="w-full h-full"/>
+				<div v-if="ImageData.prototype.isPrototypeOf(body)">
+					<NuxtImg placeholder format="webp" :src="body.path" :width="body.wdith" :height="body.height"/>
 				</div>
 				<p v-else class="pb-2">{{body}}</p>
 			</div>
+			<div v-else v-for="(body, index) in editedArticle?.bodyList" :key="index" class="rounded-md bg-gray-300 flex flex-row">
+				<div class="flex flex-col h-full justify-center space-y-2 px-2">
+					<Button @click="performSwap(index,index-1)">+</Button>
+					<Button @click="performSwap(index,index+1)">-</Button>
+				</div>
+				<div v-if="ImageData.prototype.isPrototypeOf(body)">
+					<NuxtImg placeholder format="webp" :src="body.path" :width="body.width" :height="body.height"/>
+				</div>
+				<textarea
+					v-else
+					v-model="editedArticle.bodyList[index]"
+					class="pb-2 w-4/5 h-32"
+				></textarea>
+				<div class="flex flex-col h-full justify-center space-y-2 px-2">
+					<Button @click="addSectionAtIndex(index+1)">insert</Button>
+					<Button @click="deleteSectionAtIndex(index)">delete</Button>
+				</div>
+			</div>
 
+
+			<button v-if="editMode" class="rounded-md bg-gray-500 p-2 w-fit h-fit text-white" @click="addSection">Add Section</button>
 
 		</div>
+        <div class="flex w-1/4 m-2 p-2 rounded-md bg-gray-200 grow">
+			<div v-if="isLoggedIn" class="flex flex-col space-y-2">
+				<Button v-if="!editMode" @click="onEdit">edit page</Button>
+				<Button v-if="editMode"  @click="onConfirm">confirm changes</Button>
+				<Button v-if="editMode"  @click="onCancel">cancel</Button>
+			</div>
+
+        </div>
     </div>
 </template>
 <script setup>
@@ -30,11 +58,48 @@ const isLoggedIn = useUserInfo().isLoggedIn()
 
 const route = useRoute();
 const articleName = route.params.articleName
-const article = ref((useArticleData().articleData[articleName]))
+
+const article = ref(new Article("Article 4","Subtitle 4","Jeff Davis",[new ImageData("/img/croissant.svg"),loremIpsum,loremIpsum2]))
+
+const editedArticle = ref(null)
 
 const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
 const getFormattedDate = (date) => {
     return `${date.getDay()} ${monthFormatter.format(date)}, ${date.getFullYear()}`
+}
+
+const editMode = ref(false)
+
+const onEdit = () => {
+	editedArticle.value = article.value.copyObj()
+	editMode.value = true
+}
+
+const onConfirm = () => {
+	editMode.value = false
+	article.value = editedArticle.value.copyObj()
+	editedArticle.value = null
+}
+
+const onCancel = () => {
+	editMode.value = false	
+	editedArticle.value = null
+}
+
+const performSwap = (i,j) => {
+	[editedArticle.value.bodyList[i], editedArticle.value.bodyList[j]] = [editedArticle.value.bodyList[j], editedArticle.value.bodyList[i]];
+}
+
+const addSection = () => {
+	editedArticle.value.bodyList.push("")
+}
+
+const addSectionAtIndex = (i) => {
+	editedArticle.value.bodyList.splice(i,0,"")
+}
+
+const deleteSectionAtIndex = (i) => {
+	editedArticle.value.bodyList.splice(i,1)
 }
 
 </script>

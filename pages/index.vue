@@ -7,7 +7,7 @@
         <p class="py-1 text-lg font-medium">Dengan kinerja profesional dan dukungan peralatan memadai, kami telah mendapat kepercayaan customer untuk menyediakan plat dengan ukuran dan ketebalan sesuai dengan kebutuhan, sehingga dapat mempelancar proses produksi.</p>
         <p class="py-1 text-lg font-medium">Keunggulan utama kami adalah harga plat yang kami tawarkan murah sehingga dapat membantu menekan biaya produksi. </p>
 
-        <H1 class="text-3xl font-bold text-black mt-9 mb-2">Products</H1>
+        <H2 class="pb-4 mt-9 mb-2">Produk</H2>
 
         <div class="w-full flex flex-col items-center">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">
