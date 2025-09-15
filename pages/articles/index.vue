@@ -1,6 +1,5 @@
 <template>
-	<Header/>
-    <div class="flex min-h-screen flex-row bg-gray-100 p-5">
+    <div class="flex flex-row py-5 px-8">
         <div class="flex flex-col space-y-3 grow">
             <div class="flex flex-row justify-between">
                 <H1>Artikel</H1>

@@ -1,7 +1,6 @@
 <template>
-	<Header/>
     <img :src="productData?.mainImage" class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden"/>
-    <div class="flex min-h-screen flex-col bg-gray-100 p-12">
+    <div class="flex flex-col py-5 px-8">
         <H1 class="pb-2">{{productData?.name}}</H1>
         <!-- <p style="white-space: pre-line;">{{ productData?.desc }}</p> -->
         <div v-for="text in productData?.bodyList">

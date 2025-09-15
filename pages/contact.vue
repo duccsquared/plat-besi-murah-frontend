@@ -1,6 +1,5 @@
 <template>
-	<Header/>
-    <div class="flex min-h-screen flex-col bg-gray-100 p-5">
+    <div class="flex flex-col py-5 px-8">
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/4">
                 <H2 class="pb-4">Kontak Kami</H2>

@@ -1,6 +1,5 @@
 <template>
-	<Header/>
-    <div class="flex min-h-screen flex-col bg-gray-100 p-5">
+    <div class="flex flex-col py-5 px-8">
         <H2 class="pb-4">Produk</H2>
         <div class="w-full flex flex-col items-center">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 lg:gap-16 xl:gap-20 justify-center py-5">

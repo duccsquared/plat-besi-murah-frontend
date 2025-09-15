@@ -1,6 +1,5 @@
 <template>
-	<Header/>
-    <div class="flex min-h-screen flex-row bg-gray-100">
+    <div class="flex flex-row">
         <div class="bg-gray-200 w-1/2 min-h-full">
         </div>
         <div class="bg-gray-300 w-1/2 min-h-full flex flex-col justify-center items-center space-y-4">
