@@ -1,8 +1,8 @@
 <template>
 	<div class="bg-gray-700 h-16 text-white flex flex-row items-center justify-between p-5 shadow-lg fixed z-10 w-full">
 		<!-- website name -->
-		<a v-if="loggedIn" class="text-4xl" href="/">Plat Besi Murah (admin)</a>
-		<a v-else class="text-4xl" href="/">Plat Besi Murah </a>
+		<a v-if="loggedIn" class="text-3xl" href="/">Plat Besi Murah (admin)</a>
+		<a v-else class="text-3xl" href="/">Plat Besi Murah </a>
 
 		<!-- hamburger menu for small screens -->
 		<button
