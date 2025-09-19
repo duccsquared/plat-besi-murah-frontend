@@ -5,12 +5,18 @@
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Articles</h1>
                 <p class="text-gray-500 dark:text-gray-400">Browse through our collection of articles</p>
             </div>
-            <Pagination 
-                @change="changePage" 
-                :activePage="activePage" 
-                :perPage="perPage" 
-                :total="articles.length"
-            />
+            <div class="flex flex-row space-x-4 items-center">
+                <Pagination 
+                    @change="changePage" 
+                    :activePage="activePage" 
+                    :perPage="perPage" 
+                    :total="articles.length"
+                />
+                <button @click="onCreateNew" class="px-4 py-2 h-fit rounded-md transition-all duration-200 bg-green-600 text-white hover:bg-green-700">
+                    Create New Article
+                </button>
+            </div>
+
         </div>
 
         <div class="grid gap-6">
@@ -68,8 +74,15 @@ const fetchData = async () => {
 
 }
 
+// create new article
+const onCreateNew = () => {
+    navigateTo(`/articles/new`);
+}
+
 onMounted(() => {
     fetchData()
 })
+
+
 
 </script>

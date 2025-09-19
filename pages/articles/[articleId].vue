@@ -156,6 +156,10 @@ const cancelChanges = () => {
   Object.assign(editableArticle, {})
   editableSections.value = []
   editMode.value = false
+  // if we're in create mode, return to the article page
+  if(route.params.articleId=="new") {
+    navigateTo("/articles")
+  }
 }
 
 const addSection = (type) => {
@@ -198,16 +202,30 @@ const formatDate = (date) => {
 
 const fetchData = () => {
   const articleId = route.params.articleId
-  const index = useArticleData().articleData.findIndex((article)=>article.id==articleId)
-  if(index!=-1) {
-    const articleData = useArticleData().articleData[index]
-    articleData.sections = articleData.sections.map((section,index) => ({
-      id: index,
-      type: 'text',
-      content: section
-    }))
-    article.value = articleData
-    console.log(article.value)
+  // if new, set an empty article
+  if(articleId=='new') {
+    article.value = {
+      title: '',
+      subheading: '',
+      author: '',
+      publishDate: '',
+      sections: []
+    }
+    enterEditMode()
+  }
+  else {
+    // otherwise, attempt to load data
+    const index = useArticleData().articleData.findIndex((article)=>article.id==articleId)
+    if(index!=-1) {
+      const articleData = useArticleData().articleData[index]
+      articleData.sections = articleData.sections.map((section,index) => ({
+        id: index,
+        type: 'text',
+        content: section
+      }))
+      article.value = articleData
+      console.log(article.value)
+    }
   }
 }
 
