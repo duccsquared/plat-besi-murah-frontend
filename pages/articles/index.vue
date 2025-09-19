@@ -1,12 +1,31 @@
 <template>
-    <div class="flex flex-row py-5 px-8">
-        <div class="flex flex-col space-y-3 grow">
-            <div class="flex flex-row justify-between">
-                <H1>Artikel</H1>
-                <Pagination @change="changePage" :activePage="activePage" :perPage="perPage" :total="total"/>
+    <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+            <div class="space-y-1">
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Articles</h1>
+                <p class="text-gray-500 dark:text-gray-400">Browse through our collection of articles</p>
             </div>
-            <div v-for="article in articleSubList">
-                <ArticleBox :article="article"/>
+            <Pagination 
+                @change="changePage" 
+                :activePage="activePage" 
+                :perPage="perPage" 
+                :total="articles.length"
+            />
+        </div>
+
+        <div class="grid gap-6">
+            <template v-if="articleSublist.length">
+                <ArticleBox 
+                    v-for="article in articleSublist" 
+                    :key="article.id" 
+                    :article="article"
+                />
+            </template>
+            <div 
+                v-else 
+                class="text-center py-12 text-gray-500 dark:text-gray-400"
+            >
+                No articles found
             </div>
         </div>
     </div>
@@ -15,43 +34,42 @@
 definePageMeta({
   layout: 'base'
 })
-const isLoggedIn = useUserInfo().isLoggedIn()
+// const isLoggedIn = useUserInfo().isLoggedIn()
 
-const loremIpsum = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum lacus ut sodales sodales. Nullam tempus aliquam tortor, eu iaculis eros tristique in. Aenean vel mauris tristique, feugiat erat quis, porta augue. Curabitur nec ipsum viverra, fermentum arcu eu, convallis nibh. Nunc eleifend sem in magna pulvinar, vitae accumsan mauris elementum. Morbi nulla magna, pharetra ut hendrerit a, molestie vel nisl. Etiam non velit elit. Sed id mi sed nulla commodo dictum at eu tellus. Aliquam cursus vehicula pulvinar. "
-const loremIpsum2 = " Donec nibh magna, sollicitudin vitae gravida non, consectetur id lectus. Nullam quis mi egestas, rhoncus nisi suscipit, imperdiet arcu. Nulla quis varius nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin vitae pharetra est, sit amet dapibus dolor. Fusce commodo consequat varius. Ut suscipit leo ut efficitur dapibus. Aliquam vel varius lacus. Fusce vel purus at metus tempor venenatis ac nec massa. Nullam maximus interdum dignissim. Morbi volutpat dolor eget eros lacinia lacinia. Sed pharetra commodo molestie. Pellentesque nec tincidunt lectus, et dapibus tortor. Nam condimentum, urna non porttitor rutrum, est odio ultrices nibh, vitae sodales velit eros ut mi. Morbi et diam tempus, porta nunc sit amet, efficitur nunc. Sed tempor maximus odio, sit amet egestas justo ullamcorper at. "
-const loremIpsum3 = " Nam ornare, ante ac ultrices lacinia, nibh dolor pretium orci, vel auctor tellus purus eu arcu. Proin enim tellus, vestibulum id nisi vel, viverra tincidunt metus. Praesent mattis ligula non mollis eleifend. Mauris ut semper mauris. Fusce nunc neque, sodales sit amet porttitor sit amet, porttitor non nunc. Duis quis nisl nec elit aliquam elementum eget ut lorem. Pellentesque sit amet mi magna. Ut finibus risus elit, lacinia dictum nunc sagittis at. Phasellus sed feugiat ex. Proin tincidunt orci quis varius posuere. Cras sit amet nisi id justo iaculis convallis et eget nisl. Phasellus vitae ornare lectus. Vivamus dictum nunc sed lectus tempus malesuada. Etiam ullamcorper interdum imperdiet. Maecenas eget ornare eros, in euismod ipsum. "
 
-import Article from "../classes/Article.js"
-import ImageData from "../classes/ImageData.js"
+const articles = ref([])
 
-const articleData = useArticleData().articleData
-
-let articleList = []
-
-for(var key in articleData){
-    articleList.push(articleData[key])
-}
-
-let articleSubList = [articleList[0],articleList[1],articleList[2],articleList[3]]
+const articleSublist = ref([])
 
 const activePage = ref(0);
 const perPage = ref(4);
-const total = ref(articleList.length);
 
 const changePage = (page) => {
     console.log("change page run!")
     activePage.value = page
     console.log(page)
     console.log(activePage.value)
-    articleSubList = []
+    articleSublist.value = []
     let i = activePage.value
-    while(i<Math.min(total.value,activePage.value+perPage.value)) {
-        articleSubList.push(articleList[i])
+    while(i<Math.min(articles.value.length,activePage.value+perPage.value)) {
+        articleSublist.value.push(articles.value[i])
         i += 1
     }
 }
 
-console.log(useUserInfo().username.value)
-console.log(useUserInfo().password.value)
+
+const fetchData = async () => {
+    // uses hardcoded data from a composable for now
+    const result = useArticleData().articleData
+    articles.value = result
+    for(let i = 0; i < Math.min(perPage.value,articles.value.length); i++) {
+        articleSublist.value.push(articles.value[i])
+    }
+
+}
+
+onMounted(() => {
+    fetchData()
+})
 
 </script>
