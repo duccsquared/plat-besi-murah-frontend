@@ -71,7 +71,6 @@
             :edit-mode="editMode"
             :is-first="index === 0"
             :is-last="index === currentSections.length - 1"
-            @update="updateSection"
             @delete="deleteSection(index)"
             @move-up="moveSection(index, -1)"
             @move-down="moveSection(index, 1)"
@@ -168,12 +167,12 @@ const addSection = (type) => {
   editableSections.value.push(newSection)
 }
 
-const updateSection = (updatedSection) => {
-  const index = editableSections.value.findIndex(s => s.id === updatedSection.id)
-  if (index !== -1) {
-    editableSections.value[index] = updatedSection
-  }
-}
+// const updateSection = (updatedSection) => {
+//   const index = editableSections.value.findIndex(s => s.id === updatedSection.id)
+//   if (index !== -1) {
+//     editableSections.value[index] = updatedSection
+//   }
+// }
 
 const deleteSection = (index) => {
   editableSections.value.splice(index, 1)

@@ -38,35 +38,9 @@
     <div v-if="section.type === 'text'">
       <div v-if="editMode" class="space-y-2">
         <!-- Rich text toolbar -->
-        <div class="flex gap-2 border-b border-gray-200 dark:border-gray-600 pb-2">
-          <button 
-            @click="formatText('bold')"
-            class="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            <i class="bi bi-type-bold"></i>
-          </button>
-          <button 
-            @click="formatText('italic')"
-            class="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            <i class="bi bi-type-italic"></i>
-          </button>
-          <button 
-            @click="formatText('underline')"
-            class="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            <i class="bi bi-type-underline"></i>
-          </button>
-        </div>
         
         <!-- Text editor -->
-        <div 
-          ref="textEditor"
-          contenteditable="true"
-          @input="updateContent"
-          v-html="section.content"
-          class="min-h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"
-        ></div>
+        <textarea  v-model="section.content" class="min-h-32 p-3 w-full border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"/>
       </div>
       <div v-else class="prose dark:prose-invert max-w-none" v-html="section.content"></div>
     </div>
@@ -130,18 +104,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update', 'delete', 'moveUp', 'moveDown'])
 
-const textEditor = ref(null)
-
-const formatText = (command) => {
-  document.execCommand(command, false, null)
-  updateContent()
-}
-
-const updateContent = () => {
-  if (textEditor.value) {
-    emit('update', { ...props.section, content: textEditor.value.innerHTML })
-  }
-}
 
 const handleImageUpload = (event) => {
   const file = event.target.files[0]
