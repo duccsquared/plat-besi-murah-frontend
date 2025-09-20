@@ -6,14 +6,24 @@
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
           {{ editMode ? 'Edit Article' : 'Article View' }}
         </h1>
-        <button 
-          v-if="!editMode"
-          @click="enterEditMode"
-          class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
-        >
-          <i class="bi bi-pencil"></i>
-          Edit Article
-        </button>
+        <div class="flex gap-3">
+          <button 
+            v-if="editMode"
+            @click="showAiModal = true"
+            class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 flex items-center gap-2 text-base"
+          >
+            <i class="bi bi-robot"></i>
+            Generate with AI
+          </button>
+          <button 
+            v-if="!editMode"
+            @click="enterEditMode"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
+          >
+            <i class="bi bi-pencil"></i>
+            Edit Article
+          </button>
+        </div>
       </div>
 
       <!-- Article Content -->
@@ -114,6 +124,101 @@
         </div>
       </div>
     </div>
+
+    <!-- AI Generation Modal -->
+    <div v-if="showAiModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Generate Article with AI</h3>
+          <button 
+            @click="closeAiModal"
+            class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <form @submit.prevent="generateArticle" class="space-y-4">
+          <!-- Topic (Required) -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Topic <span class="text-red-500">*</span>
+            </label>
+            <input 
+              v-model="aiForm.topic"
+              type="text"
+              required
+              placeholder="Enter article topic..."
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            >
+          </div>
+
+          <!-- Context (Optional) -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Context <span class="text-gray-400">(optional)</span>
+            </label>
+            <textarea 
+              v-model="aiForm.context"
+              rows="3"
+              placeholder="Additional context or specific requirements..."
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            ></textarea>
+          </div>
+
+          <!-- Language -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Language
+            </label>
+            <select 
+              v-model="aiForm.language"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            >
+              <option value="English">English</option>
+              <option value="Indonesian">Indonesian</option>
+              <option value="Chinese">Chinese</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex gap-3 pt-4">
+            <button 
+              type="submit"
+              :disabled="isGenerating || !aiForm.topic.trim()"
+              class="flex-1 px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base"
+            >
+              <i v-if="isGenerating" class="bi bi-arrow-clockwise animate-spin"></i>
+              <i v-else class="bi bi-magic"></i>
+              {{ isGenerating ? 'Generating...' : 'Generate Article' }}
+            </button>
+            <button 
+              type="button"
+              @click="closeAiModal"
+              :disabled="isGenerating"
+              class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-base"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <!-- Error Message -->
+        <div v-if="aiError" class="mt-4 p-3 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 rounded-md">
+          <p class="text-red-700 dark:text-red-300 text-sm">{{ aiError }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div v-if="notification.show" class="fixed top-4 right-4 z-50">
+      <div class="bg-white dark:bg-gray-800 border-l-4 border-green-500 p-4 rounded-md shadow-lg max-w-sm">
+        <div class="flex items-center">
+          <i class="bi bi-check-circle text-green-500 mr-2"></i>
+          <p class="text-gray-700 dark:text-gray-300 text-sm">{{ notification.message }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -128,6 +233,22 @@ const article = ref({sections:[]})
 const editMode = ref(false)
 const editableArticle = reactive({})
 const editableSections = ref([])
+
+// AI Generation
+const showAiModal = ref(false)
+const isGenerating = ref(false)
+const aiError = ref('')
+const aiForm = reactive({
+  topic: '',
+  context: '',
+  language: 'English'
+})
+
+// Notification
+const notification = reactive({
+  show: false,
+  message: ''
+})
 
 const currentSections = computed(() => {
   return editMode.value ? editableSections.value : article.value.sections
@@ -171,13 +292,6 @@ const addSection = (type) => {
   editableSections.value.push(newSection)
 }
 
-// const updateSection = (updatedSection) => {
-//   const index = editableSections.value.findIndex(s => s.id === updatedSection.id)
-//   if (index !== -1) {
-//     editableSections.value[index] = updatedSection
-//   }
-// }
-
 const deleteSection = (index) => {
   editableSections.value.splice(index, 1)
 }
@@ -198,6 +312,137 @@ const formatDate = (date) => {
     month: 'long', 
     day: 'numeric' 
   })
+}
+
+// AI Generation Functions
+// prompts
+const SYSTEM_PROMPT = `You are an expert content writer for the Indonesian steel company PT Pijar kreasi Mandiri, which is located in Cilegon, West Java. Your task is to generate high-quality content that is informative, engaging, and tailored to the specified language and context.
+
+Writing Guidelines:
+- Write with the individuality and rhythm of a human voice. 
+- Favor brevity, specificity, and concrete detail over generic explanation. 
+- Vary sentence length and tone (sometimes sharp, sometimes meandering). 
+- Be confident, even imperfect, rather than cautious or over-hedged. 
+- Use humor, opinion, and informality when they fit. Keep lists loose and uneven. 
+- Adapt tone and style to the topic and target audience
+- Prefer commas and periods over ornate punctuation. 
+- Avoid the polished, formulaic flow of AI text. 
+- Do not use common AI-cliches like em-dashes (—) as punctuation or the sentence structure "It's not just X, it's Y"
+- Skip stock transitions and repetitive signposting. 
+- The goal: distinct, authentic writing that feels alive.
+
+Response Format:
+Always return your response as valid JSON in this exact format:
+{
+  "title": "An engaging, descriptive title",
+  "subheading": "A compelling subtitle that expands on the title",
+  "content": "The main article content with proper paragraph breaks using \\n\\n between paragraphs"
+}
+
+Do not include any additional text, explanations, or formatting outside of this JSON structure.`
+
+const USER_PROMPT = computed(() => `Generate a comprehensive article based on the following specifications:
+
+Topic: ${aiForm.topic}
+${aiForm.context ? `Additional Context: ${aiForm.context}` : ''}
+Language: ${aiForm.language}
+
+Requirements:
+- Create an engaging title that captures the essence of the topic
+- Write a compelling subheading that complements the title
+- Develop well-structured content with multiple paragraphs
+- Ensure the content is informative, engaging, and valuable to readers
+- Use appropriate tone and style for the target language and audience
+- Include relevant examples or details when applicable
+- Do not use common AI-cliches like em-dashes (—) as punctuation or the sentence structure "It's not just X, it's Y"
+
+Return the response in valid JSON format as specified in the system prompt.`)
+
+// close modal
+const closeAiModal = () => {
+  if (!isGenerating.value) {
+    showAiModal.value = false
+    aiError.value = ''
+    Object.assign(aiForm, {
+      topic: '',
+      context: '',
+      language: 'English'
+    })
+  }
+}
+
+const showNotification = (message) => {
+  notification.show = true
+  notification.message = message
+  setTimeout(() => {
+    notification.show = false
+  }, 3000)
+}
+
+const generateArticle = async () => {
+  if (!aiForm.topic.trim()) return
+  
+  isGenerating.value = true
+  aiError.value = ''
+
+  try {
+    // First attempt with deepseek
+    let result = await useOpenRouter(
+      "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",
+      'deepseek/deepseek-chat-v3.1:free',
+      SYSTEM_PROMPT,
+      USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
+    )
+
+    // If 429 error, try second model
+    if (result.errorString && result.errorString.includes('429')) {
+      result = await useOpenRouter(
+        "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",
+        'openai/gpt-oss-120b:free',
+        SYSTEM_PROMPT,
+        USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
+      )
+    }
+
+    if (result.errorString) {
+      throw new Error(result.errorString)
+    }
+
+    // Parse JSON response
+    const parsedData = useParseJson(result.response)
+    
+    if (!parsedData) {
+      throw new Error('Failed to parse AI response as JSON. Please try again.')
+    }
+
+    if (!parsedData.title || !parsedData.content) {
+      throw new Error('Invalid response format from AI')
+    }
+
+    // Insert the data into the article
+    editableArticle.title = parsedData.title
+    editableArticle.subheading = parsedData.subheading || ''
+    
+    // Convert content to sections (split by paragraphs)
+    const contentSections = parsedData.content
+      .split('\n\n')
+      .filter(section => section.trim())
+      .map((content, index) => ({
+        id: Date.now() + index,
+        type: 'text',
+        content: content.trim()
+      }))
+    
+    editableSections.value = contentSections
+
+    isGenerating.value = false
+    closeAiModal()
+    showNotification('Article generated successfully!')
+
+  } catch (error) {
+    aiError.value = error.message || 'Failed to generate article. Please try again.'
+    isGenerating.value = false
+  } 
 }
 
 const fetchData = () => {
@@ -228,6 +473,7 @@ const fetchData = () => {
     }
   }
 }
+
 
 onMounted(() => {
   fetchData()
@@ -268,5 +514,15 @@ if (typeof window !== 'undefined') {
 
 .prose u {
   text-decoration: underline;
+}
+
+/* Animation for spinner */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 </style>
