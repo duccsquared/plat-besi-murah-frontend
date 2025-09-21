@@ -444,7 +444,7 @@ const generateArticle = async () => {
   } 
 }
 
-const fetchData = () => {
+const fetchData = async () => {
   const articleId = route.params.articleId
   // if new, set an empty article
   if(articleId=='new') {
@@ -459,16 +459,14 @@ const fetchData = () => {
   }
   else {
     // otherwise, attempt to load data
-    const index = useArticleData().articleData.findIndex((article)=>article.id==articleId)
-    if(index!=-1) {
-      const articleData = useArticleData().articleData[index]
-      articleData.sections = articleData.sections.map((section,index) => ({
-        id: index,
-        type: 'text',
-        content: section
-      }))
+    const result = await useApi("GET","/article",{id: articleId})
+    if(result && result.isSuccess) {
+      const articleData = result.data
       article.value = articleData
       console.log(article.value)
+    }
+    else {
+      console.log('article retrieval failed!')
     }
   }
 }

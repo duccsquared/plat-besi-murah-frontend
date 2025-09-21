@@ -66,12 +66,17 @@ const changePage = (page) => {
 
 const fetchData = async () => {
     // uses hardcoded data from a composable for now
-    const result = useArticleData().articleData
-    articles.value = result
-    for(let i = 0; i < Math.min(perPage.value,articles.value.length); i++) {
-        articleSublist.value.push(articles.value[i])
+    const result = await useApi("GET","/article")
+    if(result && result.isSuccess) {
+        articles.value = result.data
+        for(let i = 0; i < Math.min(perPage.value,articles.value.length); i++) {
+            articleSublist.value.push(articles.value[i])
+        }
+        console.log("Article retrieval succeeded!")
     }
-
+    else {
+        console.log("Article retrieval failed!")
+    }
 }
 
 // create new article

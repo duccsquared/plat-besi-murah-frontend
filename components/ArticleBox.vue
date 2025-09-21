@@ -10,7 +10,7 @@
                 </h3>
                 <div class="flex items-center mt-4 text-gray-500 dark:text-gray-400">
                     <span class="text-sm">
-                        {{new Date(article.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}}
+                        {{new Date(article.publishDate ?? article.publish_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}}
                     </span>
                     <span class="mx-2">•</span>
                     <span class="text-sm">
