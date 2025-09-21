@@ -7,14 +7,31 @@
           {{ editMode ? 'Edit Article' : 'Article View' }}
         </h1>
         <div class="flex gap-3">
-          <button 
-            v-if="editMode"
-            @click="showAiModal = true"
-            class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-robot"></i>
-            Generate with AI
-          </button>
+
+          <!-- Edit Mode Controls -->
+          <div v-if="editMode" class="flex gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <button 
+              @click="showAiModal = true"
+              class="px-6 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 flex items-center gap-2 text-base"
+            >
+              <i class="bi bi-robot"></i>
+              Generate with AI
+            </button>
+            <button 
+              @click="saveChanges"
+              class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
+            >
+              <i class="bi bi-check"></i>
+              Save Changes
+            </button>
+            <button 
+              @click="cancelChanges"
+              class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 flex items-center gap-2 text-base"
+            >
+              <i class="bi bi-x"></i>
+              Cancel
+            </button>
+          </div>
           <button 
             v-if="!editMode"
             @click="enterEditMode"
@@ -105,23 +122,7 @@
           </button>
         </div>
 
-        <!-- Edit Mode Controls -->
-        <div v-if="editMode" class="flex gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <button 
-            @click="saveChanges"
-            class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-check"></i>
-            Save Changes
-          </button>
-          <button 
-            @click="cancelChanges"
-            class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-x"></i>
-            Cancel
-          </button>
-        </div>
+
       </div>
     </div>
 
