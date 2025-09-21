@@ -1,9 +1,11 @@
 
-export default async function (key, model, systemPrompt, userPrompt) {
+export default async function (model, systemPrompt, userPrompt) {
+    const config = useRuntimeConfig()
+    console.log(config.public.openrouterKey)
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
-            Authorization: `Bearer ${key}`,
+            Authorization: `Bearer ${config.public.openrouterKey}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({

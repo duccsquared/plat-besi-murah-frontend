@@ -1,4 +1,4 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css', 'vue-toast-notification/dist/theme-sugar.css'],
@@ -13,9 +13,15 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/toast.js'
   ],
+
   runtimeConfig: {
+    // Private (server-only)
+    
+
+    // Public (client + server)
     public: {
-      apiBase: process.env.NUXT_API_BASE_URL || 'http://plat-besi-murah-backend-env-1.eba-r2ntmjag.us-east-2.elasticbeanstalk.com/api/', // Fallback to localhost
+      openrouterKey: process.env.OPENROUTER_API,
+      baseApiRoute: process.env.NUXT_PUBLIC_API_BASE,
     },
   },
 

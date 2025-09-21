@@ -2,10 +2,10 @@ import axios from 'axios'
 
 export const useApi = async (method, request, query=null, body=null) => {
   try {
+    const config = useRuntimeConfig()
     const response = await axios({
       method,
-      url: "http://localhost:8080/api" + request,
-      // url: `${process.env.NUXT_PUBLIC_API_BASE}${request}`,
+      url: config.public.baseApiRoute + request,
       responseType: 'json',
       params: query,
       data: body,

@@ -409,7 +409,6 @@ const generateArticle = async () => {
   try {
     // First attempt with deepseek
     let result = await useOpenRouter(
-      "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",
       'deepseek/deepseek-chat-v3.1:free',
       SYSTEM_PROMPT,
       USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
@@ -418,7 +417,6 @@ const generateArticle = async () => {
     // If 429 error, try second model
     if (result.errorString && result.errorString.includes('429')) {
       result = await useOpenRouter(
-        "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",
         'openai/gpt-oss-120b:free',
         SYSTEM_PROMPT,
         USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
