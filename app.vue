@@ -8,4 +8,5 @@
       <NuxtPage/>
     </NuxtLayout>
   </div>
+  <NotificationView/>
 </template>

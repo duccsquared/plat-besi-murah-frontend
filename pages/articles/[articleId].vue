@@ -461,6 +461,7 @@ const generateArticle = async () => {
 
   } catch (error) {
     aiError.value = error.message || 'Failed to generate article. Please try again.'
+    (useNotification()).showError(error.message || 'Failed to generate article. Please try again.')
     isGenerating.value = false
     isLoading.value = false
   } 
@@ -489,6 +490,7 @@ const fetchData = async () => {
     }
     else {
       console.log('article retrieval failed!')
+      (useNotification()).showError(result.error || "Article retrieval failed")
     }
   }
   isLoading.value = false

@@ -41,6 +41,8 @@
     </div>
 </template>
 <script setup>
+import useNotification from '~/composables/useNotification';
+
 definePageMeta({
   layout: 'base'
 })
@@ -77,10 +79,12 @@ const fetchData = async () => {
         for(let i = 0; i < Math.min(perPage.value,articles.value.length); i++) {
             articleSublist.value.push(articles.value[i])
         }
-        console.log("Article retrieval succeeded!")
+        console.log("Article retrieval succeeded!");
+        // (useNotification()).showError("Article retrieval succeeded!")
     }
     else {
-        console.log("Article retrieval failed!")
+        console.log("Article retrieval failed!");
+        (useNotification()).showError(result.error || "Article retrieval failed")
     }
     isLoading.value = false
 }
