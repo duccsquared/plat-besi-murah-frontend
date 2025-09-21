@@ -2,7 +2,11 @@
     <div class="space-y-8">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
             <div class="space-y-1">
-                <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Articles</h1>
+                <div class="flex flex-row space-x-4 items-center">
+                    <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Articles</h1>
+                    <LoadingIcon v-if="isLoading" class="ml-2" :size="8"/>
+                </div>
+
                 <p class="text-gray-500 dark:text-gray-400">Browse through our collection of articles</p>
             </div>
             <div class="flex flex-row space-x-4 items-center">
@@ -31,7 +35,7 @@
                 v-else 
                 class="text-center py-12 text-gray-500 dark:text-gray-400"
             >
-                No articles found
+                {{ isLoading? 'Loading Articles...' : 'No articles found' }}
             </div>
         </div>
     </div>
@@ -42,6 +46,7 @@ definePageMeta({
 })
 // const isLoggedIn = useUserInfo().isLoggedIn()
 
+const isLoading = ref(true)
 
 const articles = ref([])
 
@@ -77,11 +82,14 @@ const fetchData = async () => {
     else {
         console.log("Article retrieval failed!")
     }
+    isLoading.value = false
 }
 
 // create new article
 const onCreateNew = () => {
+    isLoading.value = true
     navigateTo(`/articles/new`);
+    isLoading.value = false
 }
 
 onMounted(() => {

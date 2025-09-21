@@ -3,9 +3,13 @@
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
       <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-          {{ editMode ? 'Edit Article' : 'Article View' }}
-        </h1>
+        <div class="flex flex-row space-x-4 items-center">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+            {{ editMode ? 'Edit Article' : 'Article View' }}           
+          </h1>
+          <LoadingIcon v-if="isLoading" class="ml-2" :size="8"/>
+        </div>
+
         <div class="flex gap-3">
 
           <!-- Edit Mode Controls -->
@@ -19,14 +23,16 @@
             </button>
             <button 
               @click="saveChanges"
-              class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
+              class="px-6 py-2 text-white rounded-md hover:bg-blue-700 flex items-center gap-2 text-base"
+              :class="isLoading?'bg-gray-600':'bg-blue-600'"
+              :disabled="isLoading"
             >
               <i class="bi bi-check"></i>
               Save Changes
             </button>
             <button 
               @click="cancelChanges"
-              class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 flex items-center gap-2 text-base"
+              class="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center gap-2 text-base"
             >
               <i class="bi bi-x"></i>
               Cancel
@@ -113,13 +119,13 @@
             <i class="bi bi-file-text"></i>
             Add Text Section
           </button>
-          <button 
+          <!-- <button 
             @click="addSection('image')"
             class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 flex items-center gap-2 text-base"
           >
             <i class="bi bi-image"></i>
             Add Image Section
-          </button>
+          </button> -->
         </div>
 
 
@@ -229,6 +235,8 @@ import { ref, computed, reactive } from 'vue'
 import ArticleSection from '~/components/ArticleSection.vue'
 const route = useRoute();
 
+const isLoading = ref(true)
+
 // Sample article data
 const article = ref({sections:[]})
 
@@ -265,6 +273,7 @@ const enterEditMode = () => {
 }
 
 const saveChanges = async () => {
+  isLoading.value = true
   editableArticle.value.sections = JSON.parse(JSON.stringify(editableSections.value))
   // attempt to either create or save the article
   const isCreate = route.params.articleId=="new"
@@ -274,12 +283,13 @@ const saveChanges = async () => {
     // Apply changes to original article
     article.value = editableArticle.value
     console.log("Article saved!")
+    editMode.value = false
   }
   else {
     console.log("Article failed to be saved!")
   }
-
-  editMode.value = false
+  isLoading.value = false
+  
 }
 
 const cancelChanges = () => {
@@ -393,6 +403,7 @@ const generateArticle = async () => {
   if (!aiForm.topic.trim()) return
   
   isGenerating.value = true
+  isLoading.value = true
   aiError.value = ''
 
   try {
@@ -446,12 +457,14 @@ const generateArticle = async () => {
     editableSections.value = contentSections
 
     isGenerating.value = false
+    isLoading.value = false
     closeAiModal()
     showNotification('Article generated successfully!')
 
   } catch (error) {
     aiError.value = error.message || 'Failed to generate article. Please try again.'
     isGenerating.value = false
+    isLoading.value = false
   } 
 }
 
@@ -480,6 +493,7 @@ const fetchData = async () => {
       console.log('article retrieval failed!')
     }
   }
+  isLoading.value = false
 }
 
 
