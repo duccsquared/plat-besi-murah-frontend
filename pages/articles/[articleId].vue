@@ -34,7 +34,7 @@
             v-if="editMode"
             v-model="editableArticle.title"
             placeholder="Article Title"
-            class="w-full text-3xl font-bold border-none outline-none bg-transparent text-gray-900 dark:text-white placeholder-gray-500"
+            class="w-full text-3xl font-bold bg-transparent text-gray-900 dark:text-white placeholder-gray-500 border-2 p-1 rounded-lg bg-white"
           >
           <h1 v-else class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ article.title || 'Untitled Article' }}
@@ -45,12 +45,12 @@
         <div class="mb-4">
           <input 
             v-if="editMode"
-            v-model="editableArticle.subheading"
+            v-model="editableArticle.subtitle"
             placeholder="Article Subheading"
-            class="w-full text-xl text-gray-600 dark:text-gray-300 border-none outline-none bg-transparent placeholder-gray-500"
+            class="w-full text-xl text-gray-600 dark:text-gray-300 bg-transparent placeholder-gray-500 border-2 p-1 rounded-lg bg-white"
           >
-          <h2 v-else-if="article.subheading" class="text-xl text-gray-600 dark:text-gray-300">
-            {{ article.subheading }}
+          <h2 v-else-if="article.subtitle" class="text-xl text-gray-600 dark:text-gray-300">
+            {{ article.subtitle }}
           </h2>
         </div>
 
@@ -62,7 +62,7 @@
               v-if="editMode"
               v-model="editableArticle.author"
               placeholder="Author Name"
-              class="bg-transparent border-none outline-none placeholder-gray-500 text-base"
+              class="bg-transparent placeholder-gray-500 text-base border-2 p-1 rounded-lg bg-white"
             >
             <span v-else>{{ article.author || 'Unknown Author' }}</span>
           </div>
@@ -223,6 +223,7 @@
 </template>
 
 <script setup>
+import { stringify } from 'postcss';
 import { ref, computed, reactive } from 'vue'
 import ArticleSection from '~/components/ArticleSection.vue'
 const route = useRoute();
@@ -231,7 +232,7 @@ const route = useRoute();
 const article = ref({sections:[]})
 
 const editMode = ref(false)
-const editableArticle = reactive({})
+const editableArticle = ref({})
 const editableSections = ref([])
 
 // AI Generation
@@ -256,18 +257,15 @@ const currentSections = computed(() => {
 
 const enterEditMode = () => {
   // Create deep copies for editing
-  Object.assign(editableArticle, {
-    title: article.value.title,
-    subheading: article.value.subheading,
-    author: article.value.author
-  })
+  editableArticle.value = JSON.parse(JSON.stringify(article.value))
   editableSections.value = JSON.parse(JSON.stringify(article.value.sections))
   editMode.value = true
 }
 
 const saveChanges = () => {
   // Apply changes to original article
-  Object.assign(article, editableArticle)
+  article.value = editableArticle.value
+  // Object.assign(article, editableArticle)
   article.value.sections = JSON.parse(JSON.stringify(editableSections.value))
   editMode.value = false
 }
@@ -335,7 +333,7 @@ Response Format:
 Always return your response as valid JSON in this exact format:
 {
   "title": "An engaging, descriptive title",
-  "subheading": "A compelling subtitle that expands on the title",
+  "subtitle": "A compelling subtitle that expands on the title",
   "content": "The main article content with proper paragraph breaks using \\n\\n between paragraphs"
 }
 
@@ -349,7 +347,7 @@ Language: ${aiForm.language}
 
 Requirements:
 - Create an engaging title that captures the essence of the topic
-- Write a compelling subheading that complements the title
+- Write a compelling subtitle that complements the title
 - Develop well-structured content with multiple paragraphs
 - Ensure the content is informative, engaging, and valuable to readers
 - Use appropriate tone and style for the target language and audience
@@ -420,8 +418,8 @@ const generateArticle = async () => {
     }
 
     // Insert the data into the article
-    editableArticle.title = parsedData.title
-    editableArticle.subheading = parsedData.subheading || ''
+    editableArticle.value.title = parsedData.title
+    editableArticle.value.subtitle = parsedData.subtitle || ''
     
     // Convert content to sections (split by paragraphs)
     const contentSections = parsedData.content
@@ -451,7 +449,7 @@ const fetchData = () => {
   if(articleId=='new') {
     article.value = {
       title: '',
-      subheading: '',
+      subtitle: '',
       author: '',
       publishDate: '',
       sections: []

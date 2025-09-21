@@ -6,7 +6,7 @@
                     {{article.title}}
                 </h2>
                 <h3 class="text-lg text-gray-600 dark:text-gray-300 mt-2">
-                    {{article.subheading}}
+                    {{article.subtitle}}
                 </h3>
                 <div class="flex items-center mt-4 text-gray-500 dark:text-gray-400">
                     <span class="text-sm">
