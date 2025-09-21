@@ -85,7 +85,7 @@
           </div>
           <div class="flex items-center gap-2">
             <i class="bi bi-calendar"></i>
-            <span>{{ formatDate(article.publishDate) }}</span>
+            <span>{{ formatDate(article.publishDate ?? article.publish_date) }}</span>
           </div>
         </div>
 
@@ -259,15 +259,26 @@ const currentSections = computed(() => {
 const enterEditMode = () => {
   // Create deep copies for editing
   editableArticle.value = JSON.parse(JSON.stringify(article.value))
+  editableArticle.value.publishDate = new Date()
   editableSections.value = JSON.parse(JSON.stringify(article.value.sections))
   editMode.value = true
 }
 
-const saveChanges = () => {
-  // Apply changes to original article
-  article.value = editableArticle.value
-  // Object.assign(article, editableArticle)
-  article.value.sections = JSON.parse(JSON.stringify(editableSections.value))
+const saveChanges = async () => {
+  editableArticle.value.sections = JSON.parse(JSON.stringify(editableSections.value))
+  // attempt to either create or save the article
+  const isCreate = route.params.articleId=="new"
+
+  const result = await useApi(isCreate?"POST":"PUT","/article",null,editableArticle.value)
+  if(result && result.isSuccess) {
+    // Apply changes to original article
+    article.value = editableArticle.value
+    console.log("Article saved!")
+  }
+  else {
+    console.log("Article failed to be saved!")
+  }
+
   editMode.value = false
 }
 
@@ -306,7 +317,7 @@ const moveSection = (index, direction) => {
 }
 
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString('en-US', { 
+  return (typeof date == 'date'?date:new Date(date)).toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
@@ -452,7 +463,7 @@ const fetchData = async () => {
       title: '',
       subtitle: '',
       author: '',
-      publishDate: '',
+      publishDate: new Date(),
       sections: []
     }
     enterEditMode()
