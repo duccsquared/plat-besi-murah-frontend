@@ -107,6 +107,7 @@
             @delete="deleteSection(index)"
             @move-up="moveSection(index, -1)"
             @move-down="moveSection(index, 1)"
+            @update="updateImage"
           />
         </div>
 
@@ -119,13 +120,13 @@
             <i class="bi bi-file-text"></i>
             Add Text Section
           </button>
-          <!-- <button 
+          <button 
             @click="addSection('image')"
             class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 flex items-center gap-2 text-base"
           >
             <i class="bi bi-image"></i>
             Add Image Section
-          </button> -->
+          </button>
         </div>
 
 
@@ -334,6 +335,12 @@ const formatDate = (date) => {
   })
 }
 
+const updateImage = (data) => {
+  const index = editableSections.value.findIndex((section) => section.id == data.id)
+  if(index!=-1) {
+    editableSections.value[index] = data
+  }
+}
 // AI Generation Functions
 // prompts
 const SYSTEM_PROMPT = `You are an expert content writer for the Indonesian steel company PT Pijar kreasi Mandiri, which is located in Cilegon, West Java. Your task is to generate high-quality content that is informative, engaging, and tailored to the specified language and context.
