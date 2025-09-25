@@ -22,7 +22,7 @@
       
       <!-- Section type indicator -->
       <span class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-        {{ section.type === 'text' ? 'Text Section' : 'Image Section' }}
+        {{ getSectionName(section) }}
       </span>
       
       <!-- Delete button -->
@@ -89,6 +89,39 @@
         <img :src="section.content" alt="Article image" class="max-w-full h-auto rounded-md">
       </div>
     </div>
+
+    <!-- Subheading Section -->
+    <div v-if="section.type === 'subheading'">
+      <div v-if="editMode" class="space-y-2">
+        
+        <!-- Subheading -->
+        <input  v-model="section.content" placeholder="Subheading..." class="p-3 w-full border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg font-semibold"/>
+      </div>
+      <div v-else class="prose dark:prose-invert max-w-none text-lg font-semibold" v-html="section.content"></div>
+    </div>
+
+
+    <!-- Contact Section -->
+    <div v-if="section.type === 'contact'">
+      <!-- <div v-if="editMode" class="space-y-2">
+        
+        <input v-model="section.content" placeholder="Phone Number..." class="p-3 w-full border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"/>
+      </div> -->
+      <div class="flex flex-col">
+        <p class="text-sm mb-2">Hubungi Kami</p>
+          <div class="flex flex-row">
+            <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
+            <a 
+                href="https://wa.me/6281388488430" 
+                class="font-semibold text-green-500 hover:underline"
+                target="_blank" 
+                rel="noopener noreferrer"
+            >
+                +62 813-8848-8430
+            </a>
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,5 +147,12 @@ const handleImageUpload = (event) => {
     }
     reader.readAsDataURL(file)
   }
+}
+
+const getSectionName = (section) => {
+  if(section.type=='text') {return "Text Section"}
+  if(section.type=='image') {return "Image Section"}
+  if(section.type=='subheading') {return "Subheading Section"}
+  if(section.type=='contact') {return "Contact Section"}
 }
 </script>

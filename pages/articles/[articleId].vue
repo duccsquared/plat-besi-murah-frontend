@@ -118,14 +118,28 @@
             class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center gap-2 text-base"
           >
             <i class="bi bi-file-text"></i>
-            Add Text Section
+            Text
           </button>
           <button 
             @click="addSection('image')"
             class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 flex items-center gap-2 text-base"
           >
             <i class="bi bi-image"></i>
-            Add Image Section
+            Image
+          </button>
+          <button 
+            @click="addSection('subheading')"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
+          >
+            <i class="bi bi-fonts"></i>
+            Subheading
+          </button>
+          <button 
+            @click="addSection('contact')"
+            class="px-4 py-2 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 flex items-center gap-2 text-base"
+          >
+            <i class="bi bi-whatsapp"></i>
+            WhatsApp Contact
           </button>
         </div>
 
@@ -308,7 +322,7 @@ const addSection = (type) => {
   const newSection = {
     id: Date.now(),
     type,
-    content: type === 'text' ? '' : null
+    content: type !== 'image' ? '' : null
   }
   editableSections.value.push(newSection)
 }
