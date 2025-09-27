@@ -9,7 +9,7 @@
 
                 <p class="text-gray-500 dark:text-gray-400">Browse through our collection of articles</p>
             </div>
-            <div class="flex flex-row space-x-4 items-center">
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-center">
                 <Pagination 
                     @change="changePage" 
                     :activePage="activePage" 
