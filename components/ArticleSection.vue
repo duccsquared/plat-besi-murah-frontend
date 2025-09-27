@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-white dark:bg-gray-800">
+  <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-white ">
     <!-- Section Controls (Edit Mode) -->
     <div v-if="editMode" class="flex items-center gap-2 mb-3">
       <!-- Reorder buttons -->
