@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-white dark:bg-gray-800">
+  <div class="text-black dark:text-white" :class="editMode?`border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-white dark:bg-gray-800`:(section.type !== 'image'?'p-4':'')">
     <!-- Section Controls (Edit Mode) -->
     <div v-if="editMode" class="flex items-center gap-2 mb-3">
       <!-- Reorder buttons -->
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div v-else-if="section.content">
-        <img :src="section.content" alt="Article image" class="max-w-full h-auto rounded-md">
+        <img :src="section.content" alt="Article image" class="w-full max-h-[12rem] sm:max-h-[16rem] md:max-h-[24rem] lg:max-h-[30rem] xl:max-h-[36rem] rounded-md">
       </div>
     </div>
 

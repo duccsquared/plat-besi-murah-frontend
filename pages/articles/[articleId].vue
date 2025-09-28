@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-stone-200 dark:bg-gray-900 p-4">
-    <div class="max-w-4xl mx-auto">
+  <div class="min-h-screen bg-stone-200 dark:bg-gray-900">
+    <div class="mx-auto">
       <!-- Header -->
-      <div class="flex justify-between items-center mb-6">
+      <div class="flex justify-between p-4 items-center mb-6">
         <div class="flex flex-row space-x-4 items-center">
           <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ editMode ? 'Edit Article' : 'Article View' }}           
@@ -50,9 +50,9 @@
       </div>
 
       <!-- Article Content -->
-      <div class="bg-stone-100 dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div class="">
         <!-- Title -->
-        <div class="mb-4">
+        <div class="mb-4 px-4">
           <input 
             v-if="editMode"
             v-model="editableArticle.title"
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Subheading -->
-        <div class="mb-4">
+        <div class="mb-4 px-4">
           <input 
             v-if="editMode"
             v-model="editableArticle.subtitle"
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Meta information -->
-        <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
+        <div class="flex flex-wrap gap-4 mb-6 px-4 text-sm text-gray-500 dark:text-gray-400">
           <div class="flex items-center gap-2">
             <i class="bi bi-person"></i>
             <input 
@@ -96,7 +96,7 @@
         </div>
 
         <!-- Content Sections -->
-        <div class="space-y-4">
+        <div :class="editMode?'space-y-4':'space-y-2'">
           <ArticleSection
             v-for="(section, index) in currentSections"
             :key="section.id"
@@ -112,7 +112,7 @@
         </div>
 
         <!-- Add Section Buttons (Edit Mode) -->
-        <div v-if="editMode" class="flex gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <div v-if="editMode" class="flex gap-3 mt-6 pt-6 px-4 border-t border-gray-200 dark:border-gray-700">
           <button 
             @click="addSection('text')"
             class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center gap-2 text-base"
