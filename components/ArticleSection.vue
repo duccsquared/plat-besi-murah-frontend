@@ -1,5 +1,5 @@
 <template>
-  <div class="text-black dark:text-white" :class="editMode?`border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 bg-white dark:bg-gray-800`:(section.type !== 'image'?'p-4':'')">
+  <div class="text-black dark:text-white" :class="editMode?`border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 mx-4 bg-white dark:bg-gray-800`:(section.type !== 'image'?'py-3':'')">
     <!-- Section Controls (Edit Mode) -->
     <div v-if="editMode" class="flex items-center gap-2 mb-3">
       <!-- Reorder buttons -->
@@ -40,9 +40,9 @@
         <!-- Rich text toolbar -->
         
         <!-- Text editor -->
-        <textarea  v-model="section.content" class="min-h-32 p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"/>
+        <textarea v-model="section.content" class="min-h-32 p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg"/>
       </div>
-      <div v-else class="prose dark:prose-invert max-w-none" v-html="section.content"></div>
+      <p v-else class="prose dark:prose-invert max-w-none sm:mx-6 md:mx-12 lg:mx-20 text-lg">{{ section.content }}</p>
     </div>
 
     <!-- Image Section -->
@@ -95,9 +95,9 @@
       <div v-if="editMode" class="space-y-2">
         
         <!-- Subheading -->
-        <input  v-model="section.content" placeholder="Subheading..." class="p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg font-semibold"/>
+        <input v-model="section.content" placeholder="Subheading..." class="p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-xl font-semibold"/>
       </div>
-      <div v-else class="prose dark:prose-invert max-w-none text-lg font-semibold" v-html="section.content"></div>
+      <div v-else class="prose dark:prose-invert max-w-none text-2xl font-semibold sm:mx-6 md:mx-12 lg:mx-20" v-html="section.content"></div>
     </div>
 
 
@@ -107,19 +107,20 @@
         
         <input v-model="section.content" placeholder="Phone Number..." class="p-3 w-full border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"/>
       </div> -->
-      <div class="flex flex-col">
+      <div class="flex flex-col sm:mx-6 md:mx-12 lg:mx-20">
         <p class="text-sm mb-2 text-black dark:text-white">Hubungi Kami</p>
-          <div class="flex flex-row">
-            <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
-            <a 
-                href="https://wa.me/6281388488430" 
-                class="font-semibold text-green-500 hover:underline"
-                target="_blank" 
-                rel="noopener noreferrer"
-            >
-                +62 813-8848-8430
-            </a>
-          </div>
+        <p class="text-sm mb-2 font-bold text-black dark:text-white">YUNI</p>
+        <div class="flex flex-row">
+          <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
+          <a 
+              href="https://wa.me/6281388488430" 
+              class="font-semibold text-green-500 hover:underline"
+              target="_blank" 
+              rel="noopener noreferrer"
+          >
+              +62 813-8848-8430
+          </a>
+        </div>
       </div>
     </div>
   </div>
