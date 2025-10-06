@@ -518,7 +518,7 @@ const fetchData = async () => {
 }
 
 
-onMounted(() => {
+useAsyncData(() => {
   fetchData()
 })
 

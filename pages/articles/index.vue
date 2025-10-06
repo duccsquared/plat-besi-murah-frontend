@@ -96,7 +96,7 @@ const onCreateNew = () => {
     isLoading.value = false
 }
 
-onMounted(() => {
+useAsyncData(() => {
     fetchData()
 })
 
