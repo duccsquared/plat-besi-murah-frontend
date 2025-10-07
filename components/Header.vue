@@ -28,6 +28,7 @@
 					>
 						{{ link.name }}
 					</a>
+					<button v-if="useUserInfo().isLoggedIn()" @click="onLogout" class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out text-gray-300 hover:bg-gray-800 hover:text-orange-600">Logout</button>
 				</nav>
 
 				<!-- Mobile menu button -->

@@ -4,12 +4,13 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build --dotenv .env",
-    "dev": "nuxt dev --dotenv .env.development", 
+    "dev": "nuxt dev --dotenv .env.development",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.11.2",
     "axios": "^1.12.2",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",
