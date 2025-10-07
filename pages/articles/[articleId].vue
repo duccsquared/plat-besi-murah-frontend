@@ -39,7 +39,7 @@
             </button>
           </div>
           <button 
-            v-if="!editMode"
+            v-if="!editMode && useUserInfo().isLoggedIn()"
             @click="enterEditMode"
             class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
           >
