@@ -41,65 +41,46 @@
     </div>
 </template>
 <script setup>
-import useNotification from '~/composables/useNotification';
+import useNotification from '~/composables/useNotification'
 
 definePageMeta({
   layout: 'base'
 })
-// const isLoggedIn = useUserInfo().isLoggedIn()
 
-const isLoading = ref(true)
+const activePage = ref(0)
+const perPage = ref(4)
 
-const articles = ref([])
-
-const articleSublist = ref([])
-
-const activePage = ref(0);
-const perPage = ref(4);
-
-const changePage = (page) => {
-    console.log("change page run!")
-    activePage.value = page
-    console.log(page)
-    console.log(activePage.value)
-    articleSublist.value = []
-    let i = activePage.value
-    while(i<Math.min(articles.value.length,activePage.value+perPage.value)) {
-        articleSublist.value.push(articles.value[i])
-        i += 1
+const { data: articles, pending: isLoading, error } = await useAsyncData(
+  'articles',
+  async () => {
+    const result = await useApi('GET', '/article')
+    if (result?.isSuccess) {
+      console.log('Article retrieval succeeded!')
+      return result.data
+    } else {
+      console.log('Article retrieval failed!')
+      useNotification().showError(result?.error || 'Article retrieval failed')
+      return []
     }
-}
+  }
+)
 
-
-const fetchData = async () => {
-    // uses hardcoded data from a composable for now
-    const result = await useApi("GET","/article")
-    if(result && result.isSuccess) {
-        articles.value = result.data
-        for(let i = 0; i < Math.min(perPage.value,articles.value.length); i++) {
-            articleSublist.value.push(articles.value[i])
-        }
-        console.log("Article retrieval succeeded!");
-        // (useNotification()).showError("Article retrieval succeeded!")
-    }
-    else {
-        console.log("Article retrieval failed!");
-        (useNotification()).showError(result.error || "Article retrieval failed")
-    }
-    isLoading.value = false
-}
-
-// create new article
-const onCreateNew = () => {
-    isLoading.value = true
-    navigateTo(`/articles/new`);
-    isLoading.value = false
-}
-
-useAsyncData(() => {
-    fetchData()
+// reactive computed slice for pagination
+const articleSublist = computed(() => {
+  const start = activePage.value
+  const end = Math.min(
+    articles.value?.length || 0,
+    activePage.value + perPage.value
+  )
+  return articles.value?.slice(start, end) || []
 })
 
+const changePage = (page) => {
+  console.log('change page run!')
+  activePage.value = page
+}
 
-
+const onCreateNew = () => {
+  navigateTo('/articles/new')
+}
 </script>
