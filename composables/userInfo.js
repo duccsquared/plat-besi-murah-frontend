@@ -1,6 +1,6 @@
 export const useUserInfo = () => {
-    const username = useState("username", () => useCookie("username"));
-    const password = useState("password", () => useCookie("password"));
+    const username = useCookie('username');
+    const password = useCookie('password');
     const isLoggedIn = () => {
         return username.value != null
     }
