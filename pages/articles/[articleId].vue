@@ -250,10 +250,10 @@ import { ref, computed, reactive } from 'vue'
 import ArticleSection from '~/components/ArticleSection.vue'
 const route = useRoute();
 
-const isLoading = ref(true)
+// const isLoading = ref(true)
 
 // Sample article data
-const article = ref({sections:[]})
+// const article = ref({sections:[]})
 
 const editMode = ref(false)
 const editableArticle = ref({})
@@ -488,39 +488,83 @@ const generateArticle = async () => {
   } 
 }
 
-const fetchData = async () => {
-  const articleId = route.params.articleId
-  // if new, set an empty article
-  if(articleId=='new') {
-    article.value = {
-      title: '',
-      subtitle: '',
-      author: '',
-      publishDate: new Date(),
-      sections: []
-    }
-    enterEditMode()
-  }
-  else {
-    // otherwise, attempt to load data
-    const result = await useApi("GET","/article",{id: articleId})
-    if(result && result.isSuccess) {
-      const articleData = result.data
-      article.value = articleData
-      console.log(article.value)
-    }
-    else {
-      console.log('article retrieval failed!')
-      (useNotification()).showError(result.error || "Article retrieval failed")
-    }
-  }
-  isLoading.value = false
-}
+// fetch article data server-side
+const { data: article, pending: isLoading } = await useAsyncData(
+  'article',
+  async () => {
+    const articleId = route.params.articleId
 
+    // if it's a "new" article page
+    if (articleId === 'new') {
+      return {
+        title: '',
+        subtitle: '',
+        author: '',
+        publishDate: new Date().toISOString(),
+        sections: []
+      }
+    }
 
-useAsyncData(() => {
-  fetchData()
+    // fetch from backend API
+    const result = await useApi('GET', '/article', { id: articleId })
+    if (result?.isSuccess) return result.data
+    else throw new Error(result?.error || 'Article retrieval failed')
+  }
+)
+
+// compute visible text content (for description)
+const firstParagraph = computed(() => {
+  if (!article.value?.sections?.length) return ''
+  const textSection = article.value.sections.find(s => s.type === 'text')
+  return textSection?.content?.slice(0, 200) || ''
 })
+
+// pick the first image (if any)
+const firstImage = computed(() => {
+  const imgSection = article.value.sections.find(s => s.type === 'image')
+  if (!imgSection) return ''
+  // optionally, convert base64 to data URI if needed
+  return imgSection.content.startsWith('data:image')
+    ? imgSection.content
+    : ''
+})
+
+// inject SEO-friendly metadata
+useHead(() => ({
+  title: article.value?.title || 'Plat Besi Murah — Article',
+  meta: [
+    { name: 'description', content: firstParagraph.value },
+    { property: 'og:title', content: article.value?.title },
+    { property: 'og:description', content: firstParagraph.value },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:image', content: firstImage.value },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.value?.title,
+        "description": firstParagraph.value,
+        "author": {
+          "@type": "Organization",
+          "name": article.value?.author || "PT. Pijar Kreasi Mandiri"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Plat Besi Murah",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://plat-besi-murah-frontend.vercel.app/logo.png"
+          }
+        },
+        "datePublished": article.value?.publishDate,
+        "image": firstImage.value
+      })
+    }
+  ]
+}))
 
 // Dark mode support
 if (typeof window !== 'undefined') {
