@@ -4,9 +4,9 @@
       <!-- Header -->
       <div class="flex justify-between py-4 sm:mx-6 md:mx-12 lg:mx-20 items-center mb-6">
         <div class="flex flex-row space-x-4 items-center">
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+          <!-- <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ editMode ? 'Edit Article' : 'Article View' }}           
-          </h1>
+          </h1> -->
           <LoadingIcon v-if="isLoading" class="ml-2" :size="8"/>
         </div>
 
@@ -51,6 +51,16 @@
 
       <!-- Article Content -->
       <div class="">
+        <!-- Back Button to go back to /articles -->
+        <div class="sm:mx-6 md:mx-12 lg:mx-20 mb-4">
+          <button 
+            @click="navigateTo('/articles')"
+            class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+          >
+            <i class="bi bi-arrow-left"></i>
+            Back
+          </button>
+        </div>
         <!-- Title -->
         <div class="mb-4 sm:mx-6 md:mx-12 lg:mx-20">
           <input 
