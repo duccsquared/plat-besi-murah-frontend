@@ -42,7 +42,9 @@
         <!-- Text editor -->
         <textarea @input="autoResize" ref="textarea" rows="4" v-model="section.content" class="min-h-32 p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg"/>
       </div>
-      <p v-else class="prose dark:prose-invert max-w-none sm:mx-6 md:mx-12 lg:mx-20 text-lg">{{ section.content }}</p>
+      <div v-else class="prose dark:prose-invert max-w-none sm:mx-6 md:mx-12 lg:mx-20 text-lg">
+        <p v-for="(paragraph, index) in section.content.split('\n')" :key="index">{{ paragraph }}</p>
+      </div>
     </div>
 
     <!-- Image Section -->
