@@ -83,4 +83,38 @@ const changePage = (page) => {
 const onCreateNew = () => {
   navigateTo('/articles/new')
 }
+
+// SEO visibility fix
+const jsonLd = computed(() => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": articles.value.map((a, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "url": `https://plat-besi-murah-frontend.vercel.app/articles/${a.slug || a.id}`,
+    "item": {
+      "@type": "Article",
+      "headline": a.title,
+      "description": a.description || a.subtitle || '',
+      "author": {
+        "@type": "Organization",
+        "name": "PT. Pijar Kreasi Mandiri"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Plat Besi Murah",
+      },
+      "datePublished": a.publishDate,
+    }
+  }))
+}))
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLd.value)
+    }
+  ]
+})
 </script>
