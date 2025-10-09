@@ -298,22 +298,35 @@ const enterEditMode = () => {
 }
 
 const saveChanges = async () => {
-  isLoading.value = true
-  editableArticle.value.sections = JSON.parse(JSON.stringify(editableSections.value))
-  // attempt to either create or save the article
-  const isCreate = route.params.articleId=="new"
+  
+  try {
+    isLoading.value = true
+    editableArticle.value.sections = JSON.parse(JSON.stringify(editableSections.value))
+    // attempt to either create or save the article
+    const isCreate = route.params.articleId=="new"
 
-  const result = await useApi(isCreate?"POST":"PUT","/article",null,editableArticle.value)
-  if(result && result.isSuccess) {
-    // Apply changes to original article
-    article.value = editableArticle.value
-    console.log("Article saved!")
-    editMode.value = false
+    const result = await useApi(isCreate?"POST":"PUT","/article",null,editableArticle.value)
+    if(result && result.isSuccess) {
+      // Apply changes to original article
+      article.value = editableArticle.value
+      console.log("Article saved!")
+      useNotification().showSuccess("Article saved!")
+      editMode.value = false
+    }
+    else {
+      console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
+      useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
+    }
   }
-  else {
-    console.log("Article failed to be saved!")
+  catch {
+    console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
+    useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
   }
-  isLoading.value = false
+  finally {
+    isLoading.value = false
+  }
+
+  
   
 }
 
