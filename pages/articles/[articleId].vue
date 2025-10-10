@@ -37,10 +37,11 @@
         <!-- Back Button to go back to /articles -->
         <div class="sm:mx-6 md:mx-12 lg:mx-20 mb-4">
           <button 
-            @click="navigateTo('/articles')"
+            @click="backButtonClicked=true; navigateTo('/articles')"
             class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
-            <i class="bi bi-arrow-left"></i>
+            <i v-if="!backButtonClicked" class="bi bi-arrow-left"></i>
+            <i v-else class="bi bi-arrow-clockwise spinning"></i>
             Back
           </button>
         </div>
@@ -217,6 +218,7 @@ import ArticleSection from '~/components/ArticleSection.vue'
 const route = useRoute();
 
 // const isLoading = ref(true)
+const backButtonClicked = ref(false);
 
 // Sample article data
 // const article = ref({sections:[]})
@@ -600,7 +602,7 @@ if (typeof window !== 'undefined') {
   to { transform: rotate(360deg); }
 }
 
-.animate-spin {
+.spinning {
   animation: spin 1s linear infinite;
 }
 </style>
