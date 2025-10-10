@@ -185,7 +185,7 @@
             <Button color="indigo" icon="bi bi-magic" type="submit" :loading="isGenerating" :disabled="!aiForm.topic.trim()">
               {{ isGenerating ? 'Generating...' : 'Generate Article' }}
             </Button>
-            <Button color="gray" type="button" @click="closeAiModal" :disabled="isGenerating">
+            <Button color="gray" type="button" @click="closeAiModal">
               Cancel
             </Button>
           </div>
@@ -380,14 +380,16 @@ Return the response in valid JSON format as specified in the system prompt.`)
 
 // close modal
 const closeAiModal = () => {
-  if (!isGenerating.value) {
-    showAiModal.value = false
-    aiError.value = ''
-    Object.assign(aiForm, {
-      topic: '',
-      context: '',
-      language: 'English'
-    })
+  showAiModal.value = false
+  aiError.value = ''
+  Object.assign(aiForm, {
+    topic: '',
+    context: '',
+    language: 'English'
+  })
+  if(isGenerating.value) {
+    isLoading.value = false;
+    // isGenerating.value = false;
   }
 }
 
@@ -406,13 +408,17 @@ const generateArticle = async () => {
   isLoading.value = true
   aiError.value = ''
 
-  try {
+  tryCatch: try {
     // First attempt with deepseek
     let result = await useOpenRouter(
       'deepseek/deepseek-chat-v3.1:free',
       SYSTEM_PROMPT,
       USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
     )
+    // if modal is closed, quit early
+    if(showAiModal.value==false) {
+      break tryCatch;
+    }
 
     // If 429 error, try second model
     if (result.errorString && result.errorString.includes('429')) {
@@ -421,6 +427,10 @@ const generateArticle = async () => {
         SYSTEM_PROMPT,
         USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
       )
+      // if modal is closed, quit early
+      if(showAiModal.value==false) {
+        break tryCatch;
+      }
     }
 
     if (result.errorString) {
@@ -454,17 +464,19 @@ const generateArticle = async () => {
     
     editableSections.value = contentSections
 
-    isGenerating.value = false
-    isLoading.value = false
+
     closeAiModal()
     showNotification('Article generated successfully!')
 
   } catch (error) {
     aiError.value = error.message || 'Failed to generate article. Please try again.'
     (useNotification()).showError(error.message || 'Failed to generate article. Please try again.')
+    
+  } 
+  finally {
     isGenerating.value = false
     isLoading.value = false
-  } 
+  }
 }
 
 // fetch article data server-side
