@@ -51,7 +51,7 @@
             v-if="editMode"
             v-model="editableArticle.title"
             placeholder="Article Title"
-            class="w-full text-3xl font-bold bg-transparent text-gray-900 dark:text-white placeholder-gray-500 border-2 p-1 rounded-lg bg-white"
+            class="w-full text-3xl font-bold bg-transparent text-gray-900 dark:text-white placeholder-gray-500 border-2 p-1 rounded-lg bg-white dark:bg-gray-800"
           >
           <h1 v-else class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ article.title || 'Untitled Article' }}
@@ -64,7 +64,7 @@
             v-if="editMode"
             v-model="editableArticle.subtitle"
             placeholder="Article Subheading"
-            class="w-full text-xl text-gray-600 dark:text-gray-300 bg-transparent placeholder-gray-500 border-2 p-1 rounded-lg bg-white"
+            class="w-full text-xl text-gray-600 dark:text-gray-300 bg-transparent placeholder-gray-500 border-2 p-1 rounded-lg bg-white dark:bg-gray-800"
           >
           <h2 v-else-if="article.subtitle" class="text-xl text-gray-600 dark:text-gray-300">
             {{ article.subtitle }}
@@ -79,7 +79,7 @@
               v-if="editMode"
               v-model="editableArticle.author"
               placeholder="Author Name"
-              class="bg-transparent placeholder-gray-500 text-base border-2 p-1 rounded-lg bg-white"
+              class="bg-transparent placeholder-gray-500 text-base border-2 p-1 rounded-lg bg-white dark:bg-gray-800"
             >
             <span v-else>{{ article.author || 'Unknown Author' }}</span>
           </div>
