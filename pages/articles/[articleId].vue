@@ -14,38 +14,21 @@
 
           <!-- Edit Mode Controls -->
           <div v-if="editMode" class="flex gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-            <button 
-              @click="showAiModal = true"
-              class="px-6 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 flex items-center gap-2 text-base"
-            >
-              <i class="bi bi-robot"></i>
+            <Button color="indigo" icon="bi bi-robot" @click="showAiModal = true">
               Generate with AI
-            </button>
-            <button 
-              @click="saveChanges"
-              class="px-6 py-2 text-white rounded-md hover:bg-blue-700 flex items-center gap-2 text-base"
-              :class="isLoading?'bg-gray-600':'bg-blue-600'"
-              :disabled="isLoading"
-            >
-              <i class="bi bi-check"></i>
+            </Button>
+            <Button color="blue" icon="bi bi-check"  @click="saveChanges"  :loading="isLoading">
               Save Changes
-            </button>
-            <button 
-              @click="cancelChanges"
-              class="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center gap-2 text-base"
-            >
-              <i class="bi bi-x"></i>
+            </Button>
+            <Button color="red" icon="bi bi-x" @click="cancelChanges">
               Cancel
-            </button>
+            </Button>
           </div>
-          <button 
+          <Button 
             v-if="!editMode && useUserInfo().isLoggedIn()"
-            @click="enterEditMode"
-            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-pencil"></i>
+            icon="bi bi-pencil" color="blue" @click="enterEditMode">
             Edit Article
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -123,34 +106,18 @@
 
         <!-- Add Section Buttons (Edit Mode) -->
         <div v-if="editMode" class="flex gap-3 mt-6 pt-6 sm:mx-6 md:mx-12 lg:mx-20 border-t border-gray-200 dark:border-gray-700">
-          <button 
-            @click="addSection('text')"
-            class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-file-text"></i>
+          <Button icon="bi bi-file-text" color="green" @click="addSection('text')">
             Text
-          </button>
-          <button 
-            @click="addSection('image')"
-            class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-image"></i>
+          </Button>
+          <Button icon="bi bi-image" color="purple" @click="addSection('image')">
             Image
-          </button>
-          <button 
-            @click="addSection('subheading')"
-            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-fonts"></i>
+          </Button>
+          <Button icon="bi bi-fonts" color="blue" @click="addSection('subheading')">
             Subheading
-          </button>
-          <button 
-            @click="addSection('contact')"
-            class="px-4 py-2 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 flex items-center gap-2 text-base"
-          >
-            <i class="bi bi-whatsapp"></i>
+          </Button>
+          <Button icon="bi bi-whatsapp" color="emerald" @click="addSection('contact')">
             WhatsApp Contact
-          </button>
+          </Button>
         </div>
 
 
@@ -215,23 +182,12 @@
 
           <!-- Submit Button -->
           <div class="flex gap-3 pt-4">
-            <button 
-              type="submit"
-              :disabled="isGenerating || !aiForm.topic.trim()"
-              class="flex-1 px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base"
-            >
-              <i v-if="isGenerating" class="bi bi-arrow-clockwise animate-spin"></i>
-              <i v-else class="bi bi-magic"></i>
+            <Button color="indigo" icon="bi bi-magic" type="submit" :loading="isGenerating" :disabled="!aiForm.topic.trim()">
               {{ isGenerating ? 'Generating...' : 'Generate Article' }}
-            </button>
-            <button 
-              type="button"
-              @click="closeAiModal"
-              :disabled="isGenerating"
-              class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-base"
-            >
+            </Button>
+            <Button color="gray" type="button" @click="closeAiModal" :disabled="isGenerating">
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
 

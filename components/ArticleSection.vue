@@ -59,25 +59,17 @@
             accept="image/*"
             class="hidden"
           >
-          <button 
-            @click="$refs.imageInput.click()"
-            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-base"
-          >
-            <i class="bi bi-cloud-upload mr-2"></i>
+          <Button icon="bi bi-cloud-upload" color="blue" @click="$refs.imageInput.click()">
             Upload Image
-          </button>
+          </Button>
         </div>
         
         <!-- Image preview with replace option -->
         <div v-else class="space-y-2">
           <img :src="section.content" alt="Section image" class="max-w-full h-auto rounded-md">
-          <button 
-            @click="$refs.imageInput.click()"
-            class="px-3 py-1 text-sm bg-gray-500 text-white rounded hover:bg-gray-600"
-          >
-            <i class="bi bi-arrow-clockwise mr-1"></i>
+          <Button icon="bi bi-arrow-clockwise" class="gray" @click="$refs.imageInput.click()">
             Replace Image
-          </button>
+          </Button>
           <input 
             ref="imageInput"
             type="file" 

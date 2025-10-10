@@ -16,9 +16,9 @@
                     :perPage="perPage" 
                     :total="articles.length"
                 />
-                <button v-if="useUserInfo().isLoggedIn()" @click="onCreateNew" class="px-4 py-2 h-fit rounded-md transition-all duration-200 bg-green-600 text-white hover:bg-green-700">
+                <Button color="green" v-if="useUserInfo().isLoggedIn()" @click="onCreateNew" >
                     Create New Article
-                </button>
+                </Button>
             </div>
 
         </div>
