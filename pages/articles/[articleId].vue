@@ -20,8 +20,11 @@
             <Button color="blue" icon="bi bi-check"  @click="saveChanges"  :loading="isLoading">
               Save Changes
             </Button>
-            <Button color="red" icon="bi bi-x" @click="cancelChanges">
+            <Button color="gray" icon="bi bi-x" @click="cancelChanges">
               Cancel
+            </Button>
+            <Button v-if="route.params.articleId!='new'" color="red" icon="bi bi-trash" @click="deleteArticle" :loading="isLoading">
+              Delete Article
             </Button>
           </div>
           <Button 
@@ -270,6 +273,10 @@ const saveChanges = async () => {
       console.log("Article saved!")
       useNotification().showSuccess("Article saved!")
       editMode.value = false
+      // navigate to articles page
+      if(isCreate) {
+        navigateTo(`/articles`)
+      } 
     }
     else {
       console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
@@ -283,9 +290,6 @@ const saveChanges = async () => {
   finally {
     isLoading.value = false
   }
-
-  
-  
 }
 
 const cancelChanges = () => {
@@ -296,6 +300,34 @@ const cancelChanges = () => {
   // if we're in create mode, return to the article page
   if(route.params.articleId=="new") {
     navigateTo("/articles")
+  }
+}
+
+const deleteArticle = async () => {
+  
+  try {
+    isLoading.value = true
+
+    const result = await useApi("DELETE","/article",{id:article.value.id})
+    if(result && result.isSuccess) {
+      // Apply changes to original article
+      article.value = editableArticle.value
+      console.log("Article deleted!")
+      useNotification().showSuccess("Article deleted!")
+      editMode.value = false
+      navigateTo("/articles")
+    }
+    else {
+      console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+      useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+    }
+  }
+  catch {
+    console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+    useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+  }
+  finally {
+    isLoading.value = false
   }
 }
 
