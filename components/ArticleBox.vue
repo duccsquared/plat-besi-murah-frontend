@@ -3,7 +3,7 @@
         <div class="transform transition-all duration-300 hover:-translate-y-1 w-full p-6 rounded-xl shadow-md hover:shadow-xl" :class="clicked?'bg-gray-100 dark:bg-gray-600':'bg-white dark:bg-gray-700'">
             <div class="flex flex-col">
                 <h2 class="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    <i v-if="clicked" class="bi bi-arrow-clockwise mr-1 spinning"></i>
+                    <LoadingIcon v-if="clicked"/>
                     {{article.title}}
                 </h2>
                 <h3 class="text-lg text-gray-600 dark:text-gray-300 mt-2">
