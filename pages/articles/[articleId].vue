@@ -279,13 +279,13 @@ const saveChanges = async () => {
       } 
     }
     else {
-      console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
-      useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
+      console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
+      useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
     }
   }
   catch {
-    console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
-    useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message}`)
+    console.log(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
+    useNotification().showError(`Article failed to be saved: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
   }
   finally {
     isLoading.value = false
@@ -318,13 +318,13 @@ const deleteArticle = async () => {
       navigateTo("/articles")
     }
     else {
-      console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
-      useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+      console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
+      useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
     }
   }
   catch {
-    console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
-    useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message}`)
+    console.log(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
+    useNotification().showError(`Article failed to be deleted: ${result.message ?? result.error ?? result.data?.message ?? result.request?.statusText}`)
   }
   finally {
     isLoading.value = false
@@ -536,6 +536,8 @@ const { data: article, pending: isLoading } = await useAsyncData(
     else throw new Error(result?.error || 'Article retrieval failed')
   }
 )
+
+console.log(article)
 
 // compute visible text content (for description)
 const firstParagraph = computed(() => {

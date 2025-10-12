@@ -134,16 +134,47 @@ const props = defineProps({
 
 const emit = defineEmits(['update', 'delete', 'moveUp', 'moveDown'])
 
+// image handling
+const MAX_SIZE = 400 * 1024 // 400 KB
 
-const handleImageUpload = (event) => {
+const handleImageUpload = async (event) => {
   const file = event.target.files[0]
-  if (file) {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      emit('update', { ...props.section, content: e.target.result })
+  if (!file) return
+
+  const reader = new FileReader()
+
+  reader.onload = async (e) => {
+    const img = new Image()
+    img.src = e.target.result
+
+    img.onload = async () => {
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
+
+      // Keep original dimensions
+      canvas.width = img.width
+      canvas.height = img.height
+      ctx.drawImage(img, 0, 0, img.width, img.height)
+
+      // Determine output format based on input MIME
+      // let mimeType = file.type
+      // Optionally, force a more efficient format:
+      let mimeType = 'image/webp'
+
+      // Start at high quality, then reduce until under maximum size
+      let quality = 0.9
+      let compressedDataUrl = canvas.toDataURL(mimeType, quality)
+
+      while (compressedDataUrl.length > MAX_SIZE * 1.33 && quality > 0.1) {
+        quality -= 0.05
+        compressedDataUrl = canvas.toDataURL(mimeType, quality)
+      }
+
+      emit('update', { ...props.section, content: compressedDataUrl })
     }
-    reader.readAsDataURL(file)
   }
+
+  reader.readAsDataURL(file)
 }
 
 const getSectionName = (section) => {
