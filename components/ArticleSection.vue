@@ -43,7 +43,7 @@
         <RichTextEditor v-model="section.content" placeholder="Write your section..." />
         <!-- <textarea @input="autoResize" ref="textarea" rows="4" v-model="section.content" class="min-h-32 p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg"/> -->
       </div>
-      <div v-else class="prose dark:prose-invert max-w-none sm:mx-6 md:mx-12 lg:mx-20 text-lg">
+      <div v-else class="prose dark:prose-invert max-w-none mx-4 sm:mx-6 md:mx-12 lg:mx-20 text-lg text-justify">
         <!-- <p v-for="(paragraph, index) in section.content.split('\n')" :key="index">{{ paragraph }}</p> -->
         <div v-html="section.content"></div>
       </div>
@@ -93,7 +93,7 @@
         <!-- Subheading -->
         <input v-model="section.content" placeholder="Subheading..." class="p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-xl font-semibold"/>
       </div>
-      <div v-else class="prose dark:prose-invert max-w-none text-2xl font-semibold sm:mx-6 md:mx-12 lg:mx-20" v-html="section.content"></div>
+      <div v-else class="prose dark:prose-invert max-w-none text-2xl font-semibold mx-4 sm:mx-6 md:mx-12 lg:mx-20" v-html="section.content"></div>
     </div>
 
 
@@ -103,7 +103,7 @@
         
         <input v-model="section.content" placeholder="Phone Number..." class="p-3 w-full border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-base"/>
       </div> -->
-      <div class="flex flex-col sm:mx-6 md:mx-12 lg:mx-20">
+      <div class="flex flex-col mx-4 sm:mx-6 md:mx-12 lg:mx-20">
         <p class="text-sm mb-2 text-black dark:text-white">Hubungi Kami</p>
         <p class="text-sm mb-2 font-bold text-black dark:text-white">YUNI</p>
         <div class="flex flex-row">
