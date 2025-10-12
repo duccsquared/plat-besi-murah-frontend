@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-stone-200 dark:bg-gray-900">
+  <div class="min-h-screen bg-stone-200 dark:bg-gray-900 pb-4">
     <div class="mx-auto">
       <!-- Header -->
       <div class="flex justify-between py-4 mx-4 sm:mx-6 md:mx-12 lg:mx-20 items-center mb-6">
@@ -106,7 +106,12 @@
             @move-down="moveSection(index, 1)"
             @update="updateImage"
           />
+
+          <!-- Share Button -->
+          <Button v-if="!editMode" icon="bi bi-share" class="mx-4 sm:mx-6 md:mx-12 lg:mx-20" color="green" @click="shareArticle">Share</Button>
+
         </div>
+
 
         <!-- Add Section Buttons (Edit Mode) -->
         <div v-if="editMode" class="flex gap-3 mt-6 pt-6 mx-4 sm:mx-6 md:mx-12 lg:mx-20 border-t border-gray-200 dark:border-gray-700">
@@ -368,6 +373,26 @@ const updateImage = (data) => {
     editableSections.value[index] = data
   }
 }
+
+// article sharing
+const shareArticle = async () => {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Check out this article!",
+        text: "Here's an interesting article I found:",
+        url: window.location.href,
+      });
+      useNotification().showSuccess(`Article successfully shared!`);
+    } catch (err) {
+      console.error("Share canceled or failed:", err);
+      useNotification().showError(`Share canceled or failed: ${err}`);
+    }
+  } else {
+    useNotification().showError("Error: Sharing is not supported on this browser.");
+  }
+};
+
 // AI Generation Functions
 // prompts
 const SYSTEM_PROMPT = `You are an expert content writer for the Indonesian steel company PT Pijar kreasi Mandiri, which is located in Cilegon, West Java. Your task is to generate high-quality content that is informative, engaging, and tailored to the specified language and context.
