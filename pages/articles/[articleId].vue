@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-white dark:bg-gray-900 pb-4">
     <div class="mx-auto">
       <!-- Header -->
-      <div class="flex justify-between py-4 mx-4 sm:mx-6 md:mx-12 lg:mx-20 items-center mb-6">
+      <div class="flex justify-between py-4 mx-6 md:mx-12 lg:mx-20 items-center mb-6">
         <div class="flex flex-row space-x-4 items-center">
           <!-- <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ editMode ? 'Edit Article' : 'Article View' }}           
@@ -38,7 +38,7 @@
       <!-- Article Content -->
       <div class="">
         <!-- Back Button to go back to /articles -->
-        <div class="mx-4 sm:mx-6 md:mx-12 lg:mx-20 mb-4">
+        <div class="mx-6 md:mx-12 lg:mx-20 mb-4">
           <button 
             @click="backButtonClicked=true; navigateTo('/articles')"
             class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
@@ -49,7 +49,7 @@
           </button>
         </div>
         <!-- Title -->
-        <div class="mb-4 mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+        <div class="mb-4 mx-6 md:mx-12 lg:mx-20">
           <input 
             v-if="editMode"
             v-model="editableArticle.title"
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Subheading -->
-        <div class="mb-4 mx-4 sm:mx-6 md:mx-12 lg:mx-20">
+        <div class="mb-4 mx-6 md:mx-12 lg:mx-20">
           <input 
             v-if="editMode"
             v-model="editableArticle.subtitle"
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Meta information -->
-        <div class="flex flex-wrap gap-4 mb-6 mx-4 sm:mx-6 md:mx-12 lg:mx-20 text-sm text-gray-500 dark:text-gray-400">
+        <div class="flex flex-wrap gap-4 mb-6 mx-6 md:mx-12 lg:mx-20 text-sm text-gray-500 dark:text-gray-400">
           <div class="flex items-center gap-2">
             <i class="bi bi-person"></i>
             <input 
@@ -108,13 +108,13 @@
           />
 
           <!-- Share Button -->
-          <Button v-if="!editMode" icon="bi bi-share" class="mx-4 sm:mx-6 md:mx-12 lg:mx-20" color="green" @click="shareArticle">Share</Button>
+          <Button v-if="!editMode" icon="bi bi-share" class="mx-6 md:mx-12 lg:mx-20" color="green" @click="shareArticle">Share</Button>
 
         </div>
 
 
         <!-- Add Section Buttons (Edit Mode) -->
-        <div v-if="editMode" class="flex gap-3 mt-6 pt-6 mx-4 sm:mx-6 md:mx-12 lg:mx-20 border-t border-gray-200 dark:border-gray-700">
+        <div v-if="editMode" class="flex gap-3 mt-6 pt-6 mx-6 md:mx-12 lg:mx-20 border-t border-gray-200 dark:border-gray-700">
           <Button icon="bi bi-file-text" color="green" @click="addSection('text')">
             Text
           </Button>
