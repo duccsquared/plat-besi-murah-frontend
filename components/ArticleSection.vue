@@ -82,7 +82,7 @@
         </div>
       </div>
       <div v-else-if="section.content">
-        <img :src="section.content" alt="Article image" class="w-full max-h-[12rem] sm:max-h-[16rem] md:max-h-[24rem] lg:max-h-[30rem] xl:max-h-[36rem] rounded-md">
+        <img :src="section.content" alt="Article image" class="w-full h-auto rounded-md">
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-stone-200 dark:bg-gray-900 pb-4">
+  <div class="min-h-screen bg-white dark:bg-gray-900 pb-4">
     <div class="mx-auto">
       <!-- Header -->
       <div class="flex justify-between py-4 mx-4 sm:mx-6 md:mx-12 lg:mx-20 items-center mb-6">
