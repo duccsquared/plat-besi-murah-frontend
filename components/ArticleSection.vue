@@ -43,9 +43,9 @@
         <RichTextEditor v-model="section.content" placeholder="Write your section..." />
         <!-- <textarea @input="autoResize" ref="textarea" rows="4" v-model="section.content" class="min-h-32 p-3 w-full text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 text-lg"/> -->
       </div>
-      <div v-else class="prose dark:prose-invert max-w-none mx-6 md:mx-12 lg:mx-20 text-lg text-justify">
+      <div v-else class="max-w-none mx-6 md:mx-12 lg:mx-20 text-lg text-justify font-[525] leading-snug">
         <!-- <p v-for="(paragraph, index) in section.content.split('\n')" :key="index">{{ paragraph }}</p> -->
-        <div v-html="section.content"></div>
+        <div class="space-y-5" v-html="section.content"></div>
       </div>
     </div>
 
