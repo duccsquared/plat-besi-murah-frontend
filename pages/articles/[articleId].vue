@@ -398,6 +398,8 @@ const shareArticle = async () => {
 const SYSTEM_PROMPT = `You are an expert content writer for the Indonesian steel company PT Pijar kreasi Mandiri, which is located in Cilegon, West Java. Your task is to generate high-quality content that is informative, engaging, and tailored to the specified language and context.
 
 Writing Guidelines:
+- Utilize SEO terms to improve article searchability.
+- <strong></strong> html tags can be used for bolding text
 - Write with the individuality and rhythm of a human voice. 
 - Favor brevity, specificity, and concrete detail over generic explanation. 
 - Vary sentence length and tone (sometimes sharp, sometimes meandering). 
@@ -427,6 +429,8 @@ ${aiForm.context ? `Additional Context: ${aiForm.context}` : ''}
 Language: ${aiForm.language}
 
 Requirements:
+- Utilize SEO terms to improve article searchability.
+- <strong></strong> html tags can be used for bolding text
 - Create an engaging title that captures the essence of the topic
 - Write a compelling subtitle that complements the title
 - Develop well-structured content with multiple paragraphs
@@ -470,7 +474,7 @@ const generateArticle = async () => {
   tryCatch: try {
     // First attempt with deepseek
     let result = await useOpenRouter(
-      'deepseek/deepseek-chat-v3.1:free',
+      'openai/gpt-oss-120b:free',
       SYSTEM_PROMPT,
       USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
     )
@@ -479,10 +483,10 @@ const generateArticle = async () => {
       break tryCatch;
     }
 
-    // If 429 error, try second model
-    if (result.errorString && result.errorString.includes('429')) {
+    // If 429 or 404 error, try second model
+    if (result.errorString && (result.errorString.includes('429') || result.errorString.includes('404'))) {
       result = await useOpenRouter(
-        'openai/gpt-oss-120b:free',
+        'openai/gpt-oss-20b:free',
         SYSTEM_PROMPT,
         USER_PROMPT.value.replace('${null}', aiForm.topic).replace('${null}', aiForm.context || '').replace('${null}', aiForm.language)
       )
