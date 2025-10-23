@@ -1,7 +1,7 @@
 <template>
     <ImageSlideshow :imageList="imageList"/>
     <div class="flex flex-row justify-center mt-6">
-        <div class="flex flex-col py-5 px-8 bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg shadow-md mx-8">
+        <div class="flex flex-col py-2 px-4 bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg shadow-md mx-1">
             <p class="py-1 text-lg font-medium">Kami bergerak dibidang penyediaan plat besi khususnya baby coil yang kami luruskan dan potong menjadi ukuran standard mau pun ukuran khusus. </p>
             <p class="py-1 text-lg font-medium">Perusahaan kami berlokasi di Cilegon Timur dan dioperasikan secara profesional oleh tim produksi yang berpengalaman dan didukung mesin-mesin berstandar modern seperti mesin pelurus, mesin cutting size, mesin bending, mesin laser cutting dan lain-lain.</p>
             <p class="py-1 text-lg font-medium">Dengan kinerja profesional dan dukungan peralatan memadai, kami telah mendapat kepercayaan customer untuk menyediakan plat dengan ukuran dan ketebalan sesuai dengan kebutuhan, sehingga dapat mempelancar proses produksi.</p>
