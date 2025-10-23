@@ -2,7 +2,7 @@
     <img :src="productData?.mainImage"
         class="w-full h-[12rem] sm:h-[16rem] md:h-[24rem] lg:h-[30rem] xl:h-[36rem] overflow-hidden" />
     <div class="flex flex-row justify-center mt-6">
-        <div class="flex flex-col py-5 px-8 bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg shadow-md mx-8">
+        <div class="flex flex-col py-2 px-4 bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg mx-1">
             <H1 class="pb-2">{{ productData?.name }}</H1>
             <!-- <p style="white-space: pre-line;">{{ productData?.desc }}</p> -->
             <div v-for="text in productData?.bodyList">
