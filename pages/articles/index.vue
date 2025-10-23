@@ -14,7 +14,7 @@
                     @change="changePage" 
                     :activePage="activePage" 
                     :perPage="perPage" 
-                    :total="articles.length"
+                    :total="articles?.length ?? 0"
                 />
                 <Button color="green" v-if="useUserInfo().isLoggedIn()" @click="onCreateNew" >
                     Create New Article
@@ -24,7 +24,7 @@
         </div>
 
         <div class="grid gap-6">
-            <template v-if="articleSublist.length">
+            <template v-if="articleSublist?.length">
                 <ArticleBox 
                     v-for="article in articleSublist" 
                     :key="article.id" 
@@ -88,7 +88,7 @@ const onCreateNew = () => {
 const jsonLd = computed(() => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "itemListElement": articles.value.map((a, idx) => ({
+  "itemListElement": articles.value?.map((a, idx) => ({
     "@type": "ListItem",
     "position": idx + 1,
     "url": `https://plat-besi-murah-frontend.vercel.app/articles/${a.slug || a.id}`,
