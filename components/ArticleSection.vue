@@ -45,7 +45,7 @@
       </div>
       <div v-else class=";max-w-none mx-6 md:mx-12 lg:mx-20 text-lg text-justify font-[525] leading-tight">
         <!-- <p v-for="(paragraph, index) in section.content.split('\n')" :key="index">{{ paragraph }}</p> -->
-        <div class="space-y-5" v-html="section.content.replaceAll(`<strong>`,`<strong class='font-extrabold'>`)"></div>
+        <div class="space-y-2" v-html="section.content.replaceAll(`<strong>`,`<strong class='font-extrabold'>`)"></div>
       </div>
     </div>
 
