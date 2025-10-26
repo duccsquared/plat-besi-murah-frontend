@@ -46,7 +46,7 @@
     <!-- Editor -->
     <EditorContent
     :editor="editor"
-    class="prose dark:prose-invert prose-headings:font-semibold prose-h2:text-xl prose-h2:mt-4 prose-h2:mb-2 prose-p:my-2 prose-a:underline prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none"
+    class="leading-tight prose dark:prose-invert prose-headings:font-semibold prose-h2:text-xl prose-h2:mt-4 prose-h2:mb-2 prose-p:my-2 prose-a:underline prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none"
     />
 
   </div>
