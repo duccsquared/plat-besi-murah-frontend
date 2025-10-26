@@ -1,5 +1,5 @@
 <template>
-  <div class="text-black dark:text-white" :class="editMode?`border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 mx-6bg-white dark:bg-gray-800`:(section.type !== 'image'?'py-3':'')">
+  <div class="text-black dark:text-white" :class="editMode?`border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-4 mx-6bg-white dark:bg-gray-800`:(section.type !== 'image'?'py-1':'')">
     <!-- Section Controls (Edit Mode) -->
     <div v-if="editMode" class="flex items-center gap-2 mb-3">
       <!-- Reorder buttons -->
