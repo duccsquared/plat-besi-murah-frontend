@@ -9,12 +9,12 @@
             <div class="flex flex-row">
                 <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
                 <a 
-                    href="https://wa.me/6281388488430" 
+                    href="https://wa.me/6287771926085" 
                     class="font-semibold text-green-500 hover:underline"
                     target="_blank" 
                     rel="noopener noreferrer"
                 >
-                    +62 813-8848-8430
+                    +62 877-7192-6085
                 </a>
             </div>
             

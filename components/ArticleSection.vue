@@ -105,16 +105,16 @@
       </div> -->
       <div class="flex flex-col mx-6 md:mx-12 lg:mx-20">
         <p class="text-sm mb-2 text-black dark:text-white">Hubungi Kami</p>
-        <p class="text-sm mb-2 font-bold text-black dark:text-white">YUNI</p>
+        <p class="text-sm mb-2 font-bold text-black dark:text-white">Nirdawati</p>
         <div class="flex flex-row">
           <img src="/img/whatsappSymbol.jpg" class="w-5 h-5"/>
           <a 
-              href="https://wa.me/6281388488430" 
+              href="https://wa.me/6287771926085" 
               class="font-semibold text-green-500 hover:underline"
               target="_blank" 
               rel="noopener noreferrer"
           >
-              +62 813-8848-8430
+              +62 877-7192-6085
           </a>
         </div>
       </div>
