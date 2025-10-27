@@ -20,34 +20,13 @@
       >
         <u>U</u>
       </button>
-      <!-- <button
-        @click="editor?.chain().focus().toggleBulletList().run()"
-        :class="['px-2 py-1 rounded', editor?.isActive('bulletList') ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 dark:hover:bg-gray-600']"
-      >
-        • List
-      </button>
-      <button
-        @click="editor?.chain().focus().toggleHeading({ level: 2 }).run()"
-        :class="['px-2 py-1 rounded', editor?.isActive('heading', { level: 2 }) ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 dark:hover:bg-gray-600']"
-      >
-        H2
-      </button>
-      <button @click="setLink" class="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
-        🔗
-      </button>
-      <button
-        @click="editor?.chain().focus().unsetLink().run()"
-        class="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600"
-      >
-        ❌ Link
-      </button> -->
     </div>
 
     <!-- Editor -->
     <EditorContent
     :editor="editor"
-    class="leading-tight prose dark:prose-invert prose-headings:font-semibold prose-h2:text-xl prose-h2:mt-4 prose-h2:mb-2 prose-p:my-2 prose-a:underline prose-a:text-blue-600 dark:prose-a:text-blue-400 max-w-none"
-    />
+    class="leading-tight space-y-1 dark:text-white"    
+  />
 
   </div>
 </template>
@@ -102,5 +81,10 @@ function setLink() {
   outline: none;
   min-height: 8rem;
   padding: 0.5rem;
+}
+.editor-content p {
+  margin-top: 0.25rem;  /* reduce vertical spacing */
+  margin-bottom: 0.25rem;
+  line-height: 1.25;    /* tighter line spacing */
 }
 </style>
