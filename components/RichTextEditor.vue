@@ -25,7 +25,7 @@
     <!-- Editor -->
     <EditorContent
     :editor="editor"
-    class="leading-tight space-y-1 dark:text-white"    
+    class="leading-snug space-y-1 dark:text-white"    
   />
 
   </div>
