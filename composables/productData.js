@@ -31,32 +31,52 @@ kebutuhan
     },
     cuttingSizePlate: {
         id: "cuttingSizePlate",
-        name: "Cutting Size Plate",
+        name: "Jasa Cutting Size Plate Murah I Plat Ukuran Khusus Sesuai Kebutuhan Produksi | Harga Murah, No Waste & Hemat Waktu",
         mainImage: "/img/cuttingSizePlateMain.jpg",
         imageList: ["/img/cuttingSizePlate1.jpg","/img/cuttingSizePlate2.jpg","/img/cuttingSizePlate3.jpg","/img/cuttingSizePlate4.jpg","/img/cuttingSizePlate5.jpg","/img/cuttingSizePlate6.jpg"],
         desc: `
-Kami menyediakan plat besi dengan ukuran sesuai dengan kebutuhan produksi anda. Dengan didukung oleh mesin-mesin yang memadai dan team yang berpengalaman membuat kami dipercaya oleh customer untuk menyediakan plat dengan ukuran sesuai dengan kebutuhan produksi sehingga dapat mempelancar proses produksi. 
+<h2>Solusi Plate Besi Murah Sesuai Ukuran Produksi Anda
+Kami menyediakan jasa cutting size plate atau layanan pemotongan plat besi custom yang disesuaikan dengan kebutuhan produksi bisnis Anda. Dengan mesin-mesin modern dan tim yang berpengalaman, kami siap memenuhi order plat besi dengan ukuran tepat agar proses fabrikasi Anda berjalan lebih lancar, cepat, dan hemat biaya.
 
-<b>HARGA MURAH
-Keunggulan utama kami adalah harga plat yang kami tawarkan lebih murah karena menggunakan baby coil. 
+<h2>Keunggulan Layanan Kami
 
-<b>NO WASTE
-Keunggulan lain adalah tidak ada sisa plat. Semua plat yang kami suppy dapat langsung digunakan untuk produksi sehingga perhitungan biaya produksi dapat lebih pasti.
+<h3>Harga Plat Besi Murah & Kompetitif
+Kami tawarkan harga plat yang terjangkau karena menggunakan bahan baby coil yang biaya produksinya lebih efisien. Ini membuat harga jual kami lebih bersaing di pasar.
 
-<b>HEMAT TENAGA
-Dengan adanya cutting size plate tidak perlu tambahan biaya karyawan untuk memotong plat sebelum produksi.
+<h3>No Waste, Biaya Lebih Pasti
+Semua plat yang kami kirim sudah sesuai dengan ukuran pesanan Anda. Tidak ada lagi sisa potongan yang berlebihan, sehingga perhitungan biaya produksi jadi lebih pasti dan efisien.
 
-<b>HEMAT WAKTU
-Waktu produksi dapat dipersingkat dengan adanya plat sesuai dengan kebutuhan produksi. 
+<h3>Hemat Tenaga Kerja
+Dengan layanan cutting size plate dari kami, Anda tidak perlu lagi mengeluarkan biaya tambahan untuk memotong plat sebelum proses fabrikasi. Cukup terima plat yang sudah sesuai ukuran!
 
-<b>Jenis plat:
-SPHC (plat Hitam) & SPHC-PO (plat abu-abu)
-Tebal: 1.8-6.0mm
-Ukuran: Sesuai kebutuhan
+<h3>Hemat Waktu, Produksi Lebih Cepat
+Waktu proses produksi Anda jadi lebih singkat karena plat sudah siap pakai, sesuai kebutuhan. Ini membantu mempercepat timeline proyek dan meningkatkan efisiensi kerja.
 
-SPCC-SD & SPCC-UN (plat putih)
-Tebal: 0.4-1.8mm
-Ukuran: Sesuai kebutuhan
+<h2>Jenis Plat yang Kami Tawarkan
+<b>SPHC & SPHC-PO
+Tebal: 1.8 - 6.0 mm
+Ukuran sesuai kebutuhan produksi
+
+<b>SPCC-SD & SPCC-UN
+Tebal: 0.4 - 1.8 mm
+Ukuran sesuai kebutuhan produksi
+
+<h2>Keunggulan Tambahan
+<b>Penyediaan Plat Custom Sesuai Ukuran
+Sesuaikan ukuran plat yang dibutuhkan untuk berbagai industri: fabrikasi, otomotif, konstruksi, dan lain-lain.
+
+<b>Pengiriman Tepat Waktu & Aman
+Pastikan plat sampai di tangan Anda dalam kondisi optimal dan sesuai jadwal.
+
+<h2>Kenapa Memilih Layanan Kami?
+Harga murah dan kompetitif
+Kualitas bahan yang terjamin
+Melayani pesan dalam jumlah kecil maupun besar
+Dukungan layanan customer service terbaik
+
+<h3>Hubungi Kami Sekarang!
+Dapatkan plat besi sesuai kebutuhan produksi dengan harga terbaik. Hubungi kami untuk konsultasi ukuran, harga, dan penawaran khusus!
+
         `
     },
     basePlate: {

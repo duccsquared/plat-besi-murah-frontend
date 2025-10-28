@@ -8,6 +8,8 @@
             <div v-for="text in productData?.bodyList">
                 <div v-if="text == ''" class="h-4" />
                 <p v-else-if="text.substring(0, 3) == '<b>'"><b>{{ text.substring(3) }}</b></p>
+                <p v-else-if="text.substring(0, 4) == '<h2>'"><h2 class="font-bold text-xl">{{ text.substring(4) }}</h2></p>
+                <p v-else-if="text.substring(0, 4) == '<h3>'"><h3 class="font-bold text-lg">{{ text.substring(4) }}</h3></p>
                 <p v-else>{{ text }}</p>
             </div>
             <div class="w-full flex flex-col items-center">
