@@ -141,9 +141,8 @@ Ukuran: 130 x 130mm(jackbase)
     },
     laserCutting: {
         id: "laserCutting",
-        name: "Laser Cutting",
+        name: "Jasa Laser Cutting Plat Besi Murah & Berkualitas",
         desc: `
-<b>Jasa Laser Cutting Plat Besi Murah & Berkualitas
 
 Dalam dunia industri, pemotongan plat besi merupakan salah satu proses penting yang banyak digunakan dalam berbagai aplikasi, mulai dari pembuatan komponen mesin hingga perabotan. Salah satu layanan yang populer saat ini adalah laser cutting plat besi. Kami menyediakan layanan ini dengan keunggulan yang membedakan kami dari yang lain.
 
@@ -172,5 +171,6 @@ WA. +62 87771926085
         `,
         mainImage: "/img/laserCuttingMain.jpg",
         imageList: ["/img/laserCutting1.jpg","/img/laserCutting2.jpg","/img/laserCutting3.jpg","/img/laserCutting4.jpg","/img/laserCutting5.jpg","/img/laserCutting6.jpg"],
+        video: "https://www.youtube.com/embed/64nMpxSrpxU?si=ZYWeP77h6fzgskQi"
     },
 }
