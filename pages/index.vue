@@ -63,6 +63,6 @@ const imageList = [
   "/img/websiteSplashImage2.jpg",
   "/img/websiteSplashImage3.jpg",
 ]
-productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat Jack Base & U-head",id:"platJackBaseUHead"},{name:"Bracket",id:"bracket"}]
+productList.value = [{name:"Plat Baby Coil",id:"platBabyCoil"},{name:"Cutting Size Plate",id:"cuttingSizePlate"},{name:"Base Plate",id:"basePlate"},{name:"Besi Siku Lubang",id:"besiSikuLubang"},{name:"Plat U-head",id:"platUHead"},{name:"Laser Cutting",id:"laserCutting"}]
 useProductData()
 </script>

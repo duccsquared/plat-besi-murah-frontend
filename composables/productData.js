@@ -139,21 +139,38 @@ Ukuran: 130 x 130mm(jackbase)
         mainImage: "/img/platJackBaseUHeadMain.jpg",
         imageList: ["/img/platJackBaseUHead1.jpg","/img/platJackBaseUHead2.jpg","/img/platJackBaseUHead3.jpg","/img/platJackBaseUHead4.jpg","/img/platJackBaseUHead5.jpg","/img/platJackBaseUHead6.jpg"],
     },
-    bracket: {
-        id: "bracket",
-        name: "Bracket",
+    laserCutting: {
+        id: "laserCutting",
+        name: "Laser Cutting",
         desc: `
-Kami memproduksi dan menjual bracket rak minimarket dengan kualitas bagus dan harga murah. 
+<b>Jasa Laser Cutting Plat Besi Murah & Berkualitas
 
-Produk kami tersedia dalam beberapa ukuran dan ketebalan 
+Dalam dunia industri, pemotongan plat besi merupakan salah satu proses penting yang banyak digunakan dalam berbagai aplikasi, mulai dari pembuatan komponen mesin hingga perabotan. Salah satu layanan yang populer saat ini adalah laser cutting plat besi. Kami menyediakan layanan ini dengan keunggulan yang membedakan kami dari yang lain.
 
-<b>Spesifikasi :
-Bahan: SPHC
-Tebal: 1.6mm & 2.0mm
-Ukuran: 28 cm
-Kuat hingga 50kg pershelving
+<b>Keunggulan Layanan Kami
+
+<b>Harga MURAH
+Kami menggunakan plat besi murah dengan kualitas terbaik sehingga biaya lebih terjangkau. Dengan menggunakan plat besi murah, kami dapat menawarkan harga yang lebih bersaing tanpa mengorbankan kualitas produk. Hal ini memungkinkan kami untuk memberikan solusi yang ekonomis bagi para pelanggan.
+
+<b>Teknologi Mesin Terbaru
+Kami memanfaatkan mesin laser cutting terbaru yang mampu memberikan hasil pemotongan yang presisi dan akurat. Mesin laser ini tidak hanya mempercepat proses pemotongan, tetapi juga menghasilkan tepi potongan yang halus dan minimnya limbah material. Teknologi mutakhir ini memastikan bahwa setiap proyek dapat diselesaikan dengan efisien.
+
+<b>Spesifikasi Plat Besi yang Kami Tawarkan
+Kami menyediakan berbagai pilihan plat besi yang sesuai dengan kebutuhan Anda:
+
+Plat Hitam: 1.8 mm hingga 6.0 mm. 
+Plat Putih:  0.5 mm hingga 2.0 mm. 
+
+<b>Mengapa Memilih Kami?
+Memilih jasa laser cutting kami berarti memilih kualitas, efisiensi, dan harga murah. Dengan pengalaman dan teknologi yang kami miliki, kami siap membantu Anda dalam memenuhi kebutuhan pemotongan plat besi dengan hasil maksimal.
+
+Untuk informasi lebih lanjut, Anda dapat menghubungi customer service kami. Kami siap memberikan solusi terbaik bagi Anda.
+
+Hubungi kami
+WA. +62 87771926085
+
         `,
-        mainImage: "/img/bracketMain.jpg",
-        imageList: ["/img/bracket1.jpg","/img/bracket2.jpg","/img/bracket3.jpg","/img/bracket4.jpg","/img/bracket5.jpg","/img/bracket6.jpg"],
+        mainImage: "/img/laserCuttingMain.jpg",
+        imageList: ["/img/laserCutting1.jpg","/img/laserCutting2.jpg","/img/laserCutting3.jpg","/img/laserCutting4.jpg","/img/laserCutting5.jpg","/img/laserCutting6.jpg"],
     },
 }
